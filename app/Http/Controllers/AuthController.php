@@ -69,4 +69,18 @@ class AuthController extends Controller
             'token' => $token->plainTextToken
         ];
     }
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return [
+            'message' => 'You are logged out.' 
+        ];
+    }
+    // <form action="/logout" method="POST">
+    // @csrf <!-- Token CSRF pour la sécurité -->
+    // <button type="submit" class="bg-[#DD6ECA] text-[#FBF4FA] w-[100px] h-[40px] m-8 font-bold rounded-md">
+        // Logout
+    // </button>
+// </form>
 }

@@ -34,6 +34,9 @@
                     <div class="text-red-500 text-sm">{{ $errors->first('password') }}</div>
                 @endif
             </div>
+            <div>
+                <p>Don't have an account? <a href="{{ route('register') }}" class="text-[#C447AF] font-bold ">SignUp</a></p>
+            </div>
             
             <div class="flex justify-center">
                 <button type="submit" class="bg-[#DD6ECA] text-[#FBF4FA] w-[100px] h-[40px] m-8 font-bold rounded-md">Login</button>
