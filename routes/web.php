@@ -13,3 +13,6 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/home', function () {
     return view('home.index'); 
 });
+Route::get('/about', function () {
+    return view('about.index'); 
+});
