@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,3 +20,4 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('about.contactUs'); 
 });
+Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
