@@ -1,7 +1,4 @@
-<?php
-use App\Http\Controllers\AuthentificationController;
-use Illuminate\Support\Facades\Route;
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +52,9 @@ use Illuminate\Support\Facades\Route;
             <div class="flex flex-col ">
                 <label for="password_confirmation" class="text-lg font-bold mb-4">Repeat Password</label>
                 <input type="password"  name="password_confirmation" class="border border-[#C447AF] p-2 w-96 h-10  bg-[#EAEAEA]" placeholder="tape your  Password  ">
+            </div>
+            <div class="mt-4">
+                <p>Already have an account? <a href="{{ route('login') }}" class="text-[#C447AF] font-bold ">Login</a></p>
             </div>
             <div class="flex justify-center">
                 <button class=" bg-[#DD6ECA] text-[#FBF4FA] w-[100px] h-[40px] m-8 font-bold rounded-md">SignUp</button>

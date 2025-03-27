@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -37,4 +38,49 @@ class AuthController extends Controller
             'token' => $token->plainTextToken
         ];
     }
+    public function showLoginForm()
+    {
+        return view('authentification.login');
+    }
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users',
+            'password' => 'required'
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return [
+                'errors' => [
+                    'email' => ['The provided credentials are incorrect.']
+                ]
+            ];
+            return [
+                'message' => 'The provided credentials are incorrect.' 
+            ];
+        }
+
+        $token = $user->createToken($user->name);
+
+        return [
+            'user' => $user,
+            'token' => $token->plainTextToken
+        ];
+    }
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return [
+            'message' => 'You are logged out.' 
+        ];
+    }
+    // <form action="/logout" method="POST">
+    // @csrf <!-- Token CSRF pour la sécurité -->
+    // <button type="submit" class="bg-[#DD6ECA] text-[#FBF4FA] w-[100px] h-[40px] m-8 font-bold rounded-md">
+        // Logout
+    // </button>
+// </form>
 }
