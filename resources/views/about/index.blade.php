@@ -27,18 +27,18 @@
 
     <ul class="flex gap-16  list-none">
       <li class="relative group cursor-pointer">
-        <a href="#" class="flex flex-col items-center font-md font-bold text-[#C447AF]">
+        <a href="{{ url('/home') }}" class="flex flex-col items-center font-md font-bold text-[#C447AF]">
           Home
         </a>
       </li>
 
       <li class="relative group cursor-pointer">
-        <a href="#" class="flex flex-col items-center font-md font-bold text-[#C447AF]">
+        <a href="{{ url('/about') }}" class="flex flex-col items-center font-md font-bold text-[#C447AF]">
           About
         </a>
       </li>
       <li class="relative group cursor-pointer">
-        <a href="#" class="flex flex-col items-center font-md font-bold text-[#C447AF]">
+        <a href="{{ url('/contact') }}" class="flex flex-col items-center font-md font-bold text-[#C447AF]">
           Contact Us
         </a>
       </li>
