@@ -19,6 +19,7 @@
 </head>
 
 <body class="bg-[#FBF4FA]">
+  
   <nav class="w-full flex justify-between items-center px-4 p-0 border-b-4 border-[#C447AF] ">
     <!-- logo -->
     <div class="w-auto">

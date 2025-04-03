@@ -53,7 +53,7 @@
   </nav>
   <div class="container mx-auto px-4 py-12 ">
     <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-      <div class="p-12 flex justify-between items-center">
+      <div class="p-8 flex justify-between items-center">
 
 
 

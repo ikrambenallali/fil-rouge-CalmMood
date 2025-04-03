@@ -20,4 +20,8 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('about.contactUs'); 
 });
+Route::get('/dashboard', function () {
+    return view('admin.dashboard'); 
+});
+
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
