@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -19,6 +20,7 @@
 </head>
 
 <body class="bg-[#FBF4FA] font-sans">
+
     <div class="flex h-screen">
         <!-- Sidebar -->
         <div class="w-64   bg-[#C447AF] text-white p-2 rounded-lg shadow-lg">
@@ -62,7 +64,7 @@
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="mt-10 w-full bg-[#FBF4FA] text-[#C447AF] font-semibold py-2 px-4 rounded-lg">
+                    <button type="submit" class="+mt-10 w-full bg-[#FBF4FA] text-[#C447AF] font-semibold py-2 px-4 rounded-lg">
                         <ion-icon name="log-out-outline" class="mr-2"></ion-icon> Logout
                     </button>
                 </form>
@@ -92,30 +94,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b">
-                            <td class="p-3"></td>
-                            <td class="p-3"></td>
-                            <td class="p-3">
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-[#C447AF] h-2.5 rounded-full" style="width: 75%"></div>
-                                </div>
-                            </td>
-                            <td class="p-3 flex space-x-2">
-                                <button class="text-black ">
-                                    <ion-icon name="person-remove-outline"></ion-icon>
-                                </button>
-                                <button class="text-black ">
-                                    <ion-icon name="person-add-outline"></ion-icon>
-                                </button>
-                                <button class="text-black ">
-                                    <ion-icon name="trash-outline"></ion-icon>
-                                </button>
+    @foreach ($users as $user)
+    <tr class="border-b">
+        <td class="p-3">{{ $user->name }}</td>
+        <td class="p-3">{{ $user->email }}</td>
+        <td class="p-3">
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-[#C447AF] h-2.5 rounded-full" style="width: 75%"></div>
+            </div>
+        </td>
+        <td class="p-3 flex space-x-2">
+            <button class="text-black ">
+                <ion-icon name="person-remove-outline"></ion-icon>
+            </button>
+            <button class="text-black ">
+                <ion-icon name="person-add-outline"></ion-icon>
+            </button>
+            <button class="text-black ">
+                <ion-icon name="trash-outline"></ion-icon>
+            </button>
+        </td>
+    </tr>
+    @endforeach
+</tbody>
 
-
-                            </td>
-                        </tr>
-
-                    </tbody>
                 </table>
             </div>
 
