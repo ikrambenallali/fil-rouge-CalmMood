@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -94,29 +93,34 @@
                         </tr>
                     </thead>
                     <tbody>
-    @foreach ($users as $user)
-    <tr class="border-b">
-        <td class="p-3">{{ $user->name }}</td>
-        <td class="p-3">{{ $user->email }}</td>
-        <td class="p-3">
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                <div class="bg-[#C447AF] h-2.5 rounded-full" style="width: 75%"></div>
-            </div>
-        </td>
-        <td class="p-3 flex space-x-2">
-            <button class="text-black ">
-                <ion-icon name="person-remove-outline"></ion-icon>
-            </button>
-            <button class="text-black ">
-                <ion-icon name="person-add-outline"></ion-icon>
-            </button>
-            <button class="text-black ">
-                <ion-icon name="trash-outline"></ion-icon>
-            </button>
-        </td>
-    </tr>
-    @endforeach
-</tbody>
+                        @foreach ($users as $user)
+                        <tr class="border-b">
+                            <td class="p-3">{{ $user->name }}</td>
+                            <td class="p-3">{{ $user->email }}</td>
+                            <td class="p-3">
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-[#C447AF] h-2.5 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </td>
+                            <td class="p-3 flex space-x-2">
+                                <button class="text-black ">
+                                    <ion-icon name="person-remove-outline"></ion-icon>
+                                </button>
+                                <button class="text-black ">
+                                    <ion-icon name="person-add-outline"></ion-icon>
+                                </button>
+                                <form method="POST" action="{{ route('deleteUser', $user->id) }}" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="text-black ">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                    </button>
+                                </form>
+
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
 
                 </table>
             </div>
