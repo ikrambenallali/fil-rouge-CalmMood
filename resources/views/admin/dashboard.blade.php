@@ -88,6 +88,7 @@
                         <tr>
                             <th class="p-3 text-[#FBF4FA]">Name</th>
                             <th class="p-3 text-[#FBF4FA]">Email</th>
+                            <th class="p-3 text-[#FBF4FA]">Status</th>
                             <th class="p-3 text-[#FBF4FA]">Progress</th>
                             <th class="p-3 text-[#FBF4FA]">Actions</th>
                         </tr>
@@ -97,15 +98,20 @@
                         <tr class="border-b">
                             <td class="p-3">{{ $user->name }}</td>
                             <td class="p-3">{{ $user->email }}</td>
+                            <td class="p-3">{{ $user->status }}</td>
                             <td class="p-3">
                                 <div class="w-full bg-gray-200 rounded-full h-2.5">
                                     <div class="bg-[#C447AF] h-2.5 rounded-full" style="width: 75%"></div>
                                 </div>
                             </td>
                             <td class="p-3 flex space-x-2">
-                                <button class="text-black ">
-                                    <ion-icon name="person-remove-outline"></ion-icon>
-                                </button>
+                                <form method="POST" action="{{ route('desactiverUser', $user->id) }}" class="inline">
+                                    @csrf
+                                    <button class="text-black ">
+                                        <ion-icon name="person-remove-outline"></ion-icon>
+                                    </button>
+                                </form>
+
                                 <form method="POST" action="{{ route('activerUser', $user->id) }}" class="inline">
                                     @csrf
                                     <button class="text-black ">

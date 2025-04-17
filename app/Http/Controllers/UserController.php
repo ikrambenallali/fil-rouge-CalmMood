@@ -77,4 +77,12 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Utilisateur activé avec succès.');
     }
+    public function desactivate($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = 'desactiver'; 
+        $user->save();
+
+        return redirect()->back()->with('success', 'Utilisateur desactiver avec succès.');
+    }
 }
