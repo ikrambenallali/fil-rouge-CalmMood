@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('role', 'user')->get(); 
+        $users = User::where('role', 'user')->get();
         return view('admin.dashboard', ['users' => $users]);
     }
 
@@ -68,9 +68,13 @@ class UserController extends Controller
         } else {
             return redirect()->route('allUsers')->with('error', 'User not found.');
         }
-    
     }
-    public function activerUser(){
-     
+    public function activate($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = 'activer'; 
+        $user->save();
+
+        return redirect()->back()->with('success', 'Utilisateur activé avec succès.');
     }
 }

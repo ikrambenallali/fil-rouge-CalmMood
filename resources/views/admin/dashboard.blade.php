@@ -106,9 +106,13 @@
                                 <button class="text-black ">
                                     <ion-icon name="person-remove-outline"></ion-icon>
                                 </button>
-                                <button class="text-black ">
-                                    <ion-icon name="person-add-outline"></ion-icon>
-                                </button>
+                                <form method="POST" action="{{ route('activerUser', $user->id) }}" class="inline">
+                                    @csrf
+                                    <button class="text-black ">
+                                        <ion-icon name="person-add-outline"></ion-icon>
+                                    </button>
+                                </form>
+
                                 <form method="POST" action="{{ route('deleteUser', $user->id) }}" class="inline">
                                     @csrf
                                     @method('DELETE')
@@ -116,6 +120,10 @@
                                         <ion-icon name="trash-outline"></ion-icon>
                                     </button>
                                 </form>
+                                <!-- edit users  -->
+                                <button class="text-black ">
+                                    <ion-icon name="create-outline"></ion-icon>
+                                </button>
 
                             </td>
                         </tr>

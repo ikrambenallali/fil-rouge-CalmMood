@@ -29,6 +29,9 @@ Route::get('/dashboard', function () {
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/dashboard',[UserController::class, 'index'])->name('allUsers');
 Route::delete('/dashboard/{id}', [UserController::class, 'destroy'])->name('deleteUser');
+Route::post('/dashboard/{id}', [UserController::class, 'activate'])->name('activerUser');
+
+
 Route::post('/logout', function () {
     return view('authentification.login'); 
 })->name('logout');
