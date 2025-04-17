@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
-// Route::get('/users',[UserController::class, 'index'])->name('allUsers');
+Route::get('/dashboard',[UserController::class, 'index'])->name('allUsers');
 Route::post('/logout', function () {
     return view('authentification.login'); 
 })->name('logout');
