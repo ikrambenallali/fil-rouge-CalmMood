@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,3 +27,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
+// Route::get('/users',[UserController::class, 'index'])->name('allUsers');
+Route::post('/logout', function () {
+    return view('authentification.login'); 
+})->name('logout');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Notifications\UserNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,16 +28,13 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
-            'password' => bcrypt($fields['password']), 
+            'password' => bcrypt($fields['password']),
             'role' => $role
-                ]);
+        ]);
         $token = $user->createToken($request->name);
+        $user->notify(new UserNotification());
 
-        return [
-            'user' => $user,
-            'role' => $role,
-            'token' => $token->plainTextToken
-        ];
+        return redirect(route('dashboard'));
     }
     public function showLoginForm()
     {
@@ -58,29 +56,39 @@ class AuthController extends Controller
                 ]
             ];
             return [
-                'message' => 'The provided credentials are incorrect.' 
+                'message' => 'The provided credentials are incorrect.'
             ];
         }
 
         $token = $user->createToken($user->name);
 
-        return [
-            'user' => $user,
-            'token' => $token->plainTextToken
-        ];
+
+        return redirect(url('dashboard'));
     }
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
 
         return [
-            'message' => 'You are logged out.' 
+            'message' => 'You are logged out.'
         ];
     }
     // <form action="/logout" method="POST">
     // @csrf <!-- Token CSRF pour la sécurité -->
     // <button type="submit" class="bg-[#DD6ECA] text-[#FBF4FA] w-[100px] h-[40px] m-8 font-bold rounded-md">
-        // Logout
+    // Logout
     // </button>
-// </form>
+    // </form>
+    // public function showDashboard()
+    // {
+    //     $user = auth()->user(); 
+
+    //     if ($user->role === 'admin') {
+    //         return redirect()->route('admin.dashboard'); 
+    //     }
+
+    //     // $users = User::all(); 
+    //     // return view('admin.dashboard', compact('users'));
+    // }
+
 }

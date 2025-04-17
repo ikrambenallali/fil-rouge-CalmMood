@@ -22,7 +22,7 @@
     <div class="flex h-screen">
         <!-- Sidebar -->
         <div class="w-64   bg-[#C447AF] text-white p-2 rounded-lg shadow-lg">
-            <h1 class="text-2xl font-bold mb-10 text-center">CalmMood</h1>
+            <h1 class="text-2xl font-bold mb-10 text-center ">CalmMood</h1>
             <nav>
                 <ul>
                     <li class="mb-4">
@@ -59,16 +59,24 @@
                         </a>
                     </li>
                 </ul>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="mt-10 w-full bg-[#FBF4FA] text-[#C447AF] font-semibold py-2 px-4 rounded-lg">
+                        <ion-icon name="log-out-outline" class="mr-2"></ion-icon> Logout
+                    </button>
+                </form>
+
             </nav>
         </div>
-       
+
         <!-- Main Content -->
         <!-- logo -->
-      
+
         <div class="flex-1 p-10 overflow-y-auto">
-        <div class="-ml-6">
-            <img class="w-[15%] -my-12" src="{{ asset('storage/images/logo.png') }}" alt="logo">
-        </div>
+            <div class="-ml-6">
+                <img class="w-[15%] -my-12" src="{{ asset('storage/images/logo.png') }}" alt="logo">
+            </div>
             <h2 class="text-3xl font-semibold mb-8 mt-12 text-[#C447AF] ">Dashboard</h2>
 
             <!-- Utilisateurs Section -->
@@ -85,46 +93,28 @@
                     </thead>
                     <tbody>
                         <tr class="border-b">
-                            <td class="p-3">Sophie Martin</td>
-                            <td class="p-3">sophie@example.com</td>
+                            <td class="p-3"></td>
+                            <td class="p-3"></td>
                             <td class="p-3">
                                 <div class="w-full bg-gray-200 rounded-full h-2.5">
                                     <div class="bg-[#C447AF] h-2.5 rounded-full" style="width: 75%"></div>
                                 </div>
                             </td>
                             <td class="p-3 flex space-x-2">
-                                <button class="text-green-500 hover:text-green-700">
-                                    <i class="fas fa-check-circle"></i>
+                                <button class="text-black ">
+                                    <ion-icon name="person-remove-outline"></ion-icon>
                                 </button>
-                                <button class="text-red-500 hover:text-red-700">
-                                    <i class="fas fa-times-circle"></i>
+                                <button class="text-black ">
+                                    <ion-icon name="person-add-outline"></ion-icon>
                                 </button>
-                                <button class="text-gray-500 hover:text-gray-700">
-                                    <i class="fas fa-trash"></i>
+                                <button class="text-black ">
+                                    <ion-icon name="trash-outline"></ion-icon>
                                 </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-3">Lucas Dupont</td>
-                            <td class="p-3">lucas@example.com</td>
-                            <td class="p-3">
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-[#F2C4EA] h-2.5 rounded-full" style="width: 45%"></div>
-                                </div>
-                            </td>
-                            <td class="p-3 flex space-x-2">
-                                <button class="text-[#FBF4FA] ">
-                                    <i class="fas fa-check-circle"></i>
-                                </button>
-                                <button class="text-red-500 hover:text-red-700">
-                                    <i class="fas fa-times-circle"></i>
-                                </button>
-                                <button class="text-gray-500 hover:text-gray-700">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+
 
                             </td>
                         </tr>
+
                     </tbody>
                 </table>
             </div>
