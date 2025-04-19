@@ -47,7 +47,7 @@
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+                        <a href="#" class="flex items-center  hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
                             <ion-icon name="reader-outline"></ion-icon>
                             <i class="fas fa-meditation mr-3"></i> Exercises
                         </a>
@@ -63,7 +63,8 @@
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="+mt-10 w-full bg-[#FBF4FA] text-[#C447AF] font-semibold py-2 px-4 rounded-lg">
+                    
+                    <button type="submit" class="w-full bg-[#FBF4FA] text-[#C447AF] font-semibold py-2 px-4 rounded-lg">
                         <ion-icon name="log-out-outline" class="mr-2"></ion-icon> Logout
                     </button>
                 </form>
@@ -81,8 +82,20 @@
             <h2 class="text-3xl font-semibold mb-8 mt-12 text-[#C447AF] ">Dashboard</h2>
 
             <!-- Utilisateurs Section -->
+           
+              
             <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+                <div class="flex justify-between">
                 <h3 class="text-xl font-bold mb-4 text-gray-700">user management</h3>
+                  <!-- recherche  -->
+            <div class="flex justify-between mb-4 gap-2">
+                <div class="relative ">
+                    <input type="text" placeholder="Search..." class="w-full p-2 border rounded-lg" />
+                    <ion-icon name="search-outline" class="absolute right-3 top-2 text-gray-500"></ion-icon>
+                </div>
+                <button class="bg-[#C447AF] text-white px-4 py-2 rounded-lg">Search</button>
+            </div>
+                </div>
                 <table class="w-full text-sm text-left bg-white ">
                     <thead class="bg-[#E192D4]">
                         <tr>
@@ -127,18 +140,22 @@
                                     </button>
                                 </form>
                                 <!-- edit users  -->
-                                <button class="text-black ">
+                                <!-- <button class="text-black ">
                                     <ion-icon name="create-outline"></ion-icon>
-                                </button>
+                                </button> -->
 
                             </td>
                         </tr>
+                     
                         @endforeach
                     </tbody>
 
                 </table>
+                   <!-- Liens de pagination -->
+                   <div class="flex justify-end mt-4">
+  {{ $users->links() }}
+</div>
             </div>
-
             <!-- Statistiques Section -->
             <div class="grid grid-cols-3 gap-6">
                 <div class="bg-white shadow-lg rounded-lg p-6">
@@ -162,10 +179,10 @@
                     <h3 class="text-xl font-bold mb-4 text-gray-700">Statistiques</h3>
                     <div class="space-y-3">
                         <div>
-                            <span class="text-black">• </span>Total Utilisateurs: 50
+                            <span class="text-black">• </span>Total Utilisateurs: {{ $users->count() }}
                         </div>
                         <div>
-                            <span class="text-black">• </span>Utilisateurs Actifs: 35
+                            <span class="text-black">• </span>Utilisateurs Active   :{{$users->where('status', 'activer')->count()}}
                         </div>
                         <div>
                             <span class="text-black">• </span>Nouveaux cette semaine: 12

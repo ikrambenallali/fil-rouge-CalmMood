@@ -13,7 +13,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('role', 'user')->get();
+        $users = User::paginate(5);
         return view('admin.dashboard', ['users' => $users]);
+        
     }
 
     /**
