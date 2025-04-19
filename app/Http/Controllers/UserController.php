@@ -10,14 +10,24 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::where('role', 'user')->get();
-        $users = User::paginate(5);
-        return view('admin.dashboard', ['users' => $users]);
-        
+        $query = User::where('role', 'user'); 
+    
+        if ($request->filled('search')) {
+            $search = $request->search;
+    
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+    
+        $users = $query->paginate(5)->appends(['search' => $request->search]);
+    
+        return view('admin.dashboard', compact('users'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
