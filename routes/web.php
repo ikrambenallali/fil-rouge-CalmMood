@@ -25,7 +25,9 @@ Route::get('/contact', function () {
 Route::get('/dashboard', function () {
     return view('admin.dashboard'); 
 });
-
+Route::get('/typeStress', function () {
+    return view('utilisateurs.typeStress'); 
+});
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
 // dashboard routes
 Route::get('/dashboard',[UserController::class, 'index'])->name('allUsers');
