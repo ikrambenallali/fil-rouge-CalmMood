@@ -1,0 +1,240 @@
+Test : Quel est votre type de stress principal ?
+Q1. Quand vous vous sentez stressé(e), que ressentez-vous le plus souvent ?
+A. Mon cœur bat vite (🟥 aigu)
+B. Je me sens vidé(e) d’énergie pendant plusieurs jours (🟩 chronique)
+C. Je deviens très émotif/émotive (🟦 émotionnel)
+D. J’ai des douleurs physiques (maux de tête, dos, etc.) (🟨 physique)
+
+Q2. Quelle est la fréquence de votre stress ?
+A. Seulement dans des situations précises (🟥 aigu)
+B. Presque tous les jours (🟩 chronique)
+C. Quand j’ai des conflits personnels (🟦 émotionnel)
+D. Quand je suis fatigué(e) ou malade (🟨 physique)
+
+Q3. Qu’est-ce qui déclenche le plus souvent votre stress ?
+A. Une urgence ou un événement inattendu (🟥 aigu)
+B. Mon travail, mes études ou mes responsabilités continues (🟩 chronique)
+C. Les relations personnelles compliquées (🟦 émotionnel)
+D. Le manque de sommeil, mauvaise alimentation (🟨 physique)
+
+Q4. Comment réagit votre corps sous stress ?
+A. Je transpire, mon rythme cardiaque augmente (🟥 aigu)
+B. J’ai des insomnies fréquentes (🟩 chronique)
+C. Je pleure ou je ressens une grande tristesse (🟦 émotionnel)
+D. J’ai des tensions musculaires ou des douleurs (🟨 physique)
+
+Q5. Combien de temps dure votre stress ?
+A. Quelques minutes ou heures (🟥 aigu)
+B. Plusieurs jours voire semaines (🟩 chronique)
+C. Cela dépend des émotions que je ressens (🟦 émotionnel)
+D. Cela dure tant que mon corps ne récupère pas (🟨 physique)
+
+Q6. Que faites-vous généralement pour gérer votre stress ?
+A. Je respire profondément ou fais une pause (🟥 aigu)
+B. Je n’arrive pas à le gérer, il revient toujours (🟩 chronique)
+C. Je parle à un proche ou je pleure (🟦 émotionnel)
+D. Je me repose ou prends un bain chaud (🟨 physique)
+
+Q7. Comment se manifeste votre stress mentalement ?
+A. J’ai du mal à me concentrer soudainement (🟥 aigu)
+B. Je ressens une pression constante sur mes épaules (🟩 chronique)
+C. Je ressasse beaucoup d’émotions (🟦 émotionnel)
+D. Mon cerveau semble fatigué, j’ai des migraines (🟨 physique)
+
+Q8. Votre sommeil est-il affecté par le stress ?
+A. Je dors mal la nuit d’un événement stressant (🟥 aigu)
+B. Je dors mal presque tout le temps (🟩 chronique)
+C. Je dors mal quand je suis contrarié(e) (🟦 émotionnel)
+D. Mon stress m’épuise, j’ai envie de dormir tout le temps (🟨 physique)
+
+Q9. Vous sentez-vous soutenu(e) dans vos moments de stress ?
+A. Oui, j’arrive à gérer seul(e) quand c’est ponctuel (🟥 aigu)
+B. Non, j’ai l’impression d’être toujours seul(e) (🟩 chronique)
+C. J’ai besoin de parler et d’être écouté(e) (🟦 émotionnel)
+D. J’ai besoin de me reposer pour aller mieux (🟨 physique)
+
+Q10. Si vous deviez décrire votre stress en un mot, ce serait :
+A. Brusque (🟥 aigu)
+B. Permanent (🟩 chronique)
+C. Intense émotionnellement (🟦 émotionnel)
+D. Fatigant physiquement (🟨 physique)
+
+🧠 Calcul du score :
+Pour chaque réponse choisie, tu ajoutes un point au type associé :
+
+🟥 = Stress aigu
+
+🟩 = Stress chronique
+
+🟦 = Stress émotionnel
+
+🟨 = Stress physique
+
+À la fin :
+
+Le type qui a le plus grand nombre de points = type principal de stress.
+
+Tu peux aussi afficher les types secondaires s’il y a égalité ou scores proches.
+
+; anglais 
+
+
+Test: What Is Your Main Type of Stress?
+Q1. When you feel stressed, what do you usually experience?
+A. My heart races (🟥 Acute)
+B. I feel drained of energy for several days (🟩 Chronic)
+C. I become very emotional (🟦 Emotional)
+D. I get physical pain (headaches, back pain, etc.) (🟨 Physical)
+
+Q2. How often do you experience stress?
+A. Only in specific situations (🟥 Acute)
+B. Almost every day (🟩 Chronic)
+C. When I have personal conflicts (🟦 Emotional)
+D. When I'm tired or sick (🟨 Physical)
+
+Q3. What usually triggers your stress?
+A. An emergency or unexpected event (🟥 Acute)
+B. My work, studies, or ongoing responsibilities (🟩 Chronic)
+C. Complicated personal relationships (🟦 Emotional)
+D. Lack of sleep or poor nutrition (🟨 Physical)
+
+Q4. How does your body react to stress?
+A. I sweat and my heart rate increases (🟥 Acute)
+B. I often have insomnia (🟩 Chronic)
+C. I cry or feel very sad (🟦 Emotional)
+D. I have muscle tension or aches (🟨 Physical)
+
+Q5. How long does your stress last?
+A. A few minutes or hours (🟥 Acute)
+B. Several days or even weeks (🟩 Chronic)
+C. It depends on the emotions I feel (🟦 Emotional)
+D. It lasts until my body fully recovers (🟨 Physical)
+
+Q6. What do you usually do to manage your stress?
+A. I take deep breaths or take a break (🟥 Acute)
+B. I can’t manage it—it always comes back (🟩 Chronic)
+C. I talk to someone or cry (🟦 Emotional)
+D. I rest or take a hot bath (🟨 Physical)
+
+Q7. How does your stress affect you mentally?
+A. I suddenly have trouble concentrating (🟥 Acute)
+B. I feel constant pressure on my shoulders (🟩 Chronic)
+C. I keep going over emotional thoughts (🟦 Emotional)
+D. My brain feels tired, I get migraines (🟨 Physical)
+
+Q8. Is your sleep affected by stress?
+A. I sleep badly the night after a stressful event (🟥 Acute)
+B. I almost always sleep poorly (🟩 Chronic)
+C. I sleep poorly when I'm upset (🟦 Emotional)
+D. My stress exhausts me, I want to sleep all the time (🟨 Physical)
+
+Q9. Do you feel supported during stressful times?
+A. Yes, I can handle it on my own when it's occasional (🟥 Acute)
+B. No, I feel like I'm always alone (🟩 Chronic)
+C. I need to talk and be heard (🟦 Emotional)
+D. I need rest to feel better (🟨 Physical)
+
+Q10. If you had to describe your stress in one word, what would it be?
+A. Sudden (🟥 Acute)
+B. Constant (🟩 Chronic)
+C. Emotionally intense (🟦 Emotional)
+D. Physically exhausting (🟨 Physical)
+
+🧠 Score Calculation:
+For each selected answer, add 1 point to the corresponding stress type:
+
+🟥 = Acute stress
+
+🟩 = Chronic stress
+
+🟦 = Emotional stress
+
+🟨 = Physical stress
+
+At the end:
+The type with the highest score = your main type of stress.
+You can also display secondary types if scores are tied or close.
+
+Let me know if you want help turning this into a functional quiz (in a web app, mobi
+
+
+
+
+ Acute Stress
+Acute stress is the most common and immediate form of stress. It happens in response to sudden challenges or pressures—like a tight deadline, a surprise event, or a moment of danger. This type of stress activates your body’s "fight or flight" response, leading to symptoms like a racing heart, quick breathing, or feeling nervous. While it can feel intense, it usually disappears quickly once the situation is resolved. In small doses, acute stress can even be motivating.
+
+🟩 Chronic Stress
+Chronic stress develops when you're exposed to stressors over a long period of time—such as ongoing work pressure, financial worries, or unresolved personal problems. Unlike acute stress, it doesn’t go away easily and can wear you down both mentally and physically. People with chronic stress often feel overwhelmed, tired, and anxious almost constantly. Without proper management, it can lead to serious health issues like depression, high blood pressure, or burnout.
+
+🟦 Emotional Stress
+Emotional stress is deeply connected to how we feel and process emotions. It often arises from personal relationships, loss, loneliness, or emotional trauma. When you're emotionally stressed, you may feel sadness, frustration, or anxiety, and have a strong need to talk, cry, or isolate yourself. It can affect your ability to think clearly, make decisions, or maintain focus. Emotional stress reminds us how important it is to care for our mental well-being and seek support when needed.
+
+🟨 Physical Stress
+Physical stress comes from things that put strain on your body—such as lack of sleep, poor nutrition, illness, or overworking. Even if you’re mentally calm, your body can still be stressed, leading to headaches, muscle tension, fatigue, or a weakened immune system. Sometimes physical stress is a sign that your body needs rest and care. Listening to those signals and taking time to recover is essential to avoid exhaustion or long-term health issues.
+
+
+ Acute Stress
+Definition:
+A short-term and immediate reaction to a stressful situation.
+Examples:
+
+Being late for an important appointment.
+
+Public speaking.
+
+Avoiding a near accident.
+Symptoms:
+
+Rapid heartbeat, quick breathing, sweating, restlessness.
+
+Usually fades quickly once the situation is over.
+
+🧠 Useful in certain situations: it prepares the body for a quick response ("fight or flight").
+
+🟩 Chronic Stress
+Definition:
+Long-term stress that comes from repeated or ongoing situations.
+Examples:
+
+Financial problems, work overload, constant family pressure.
+
+Burnout or long-term anxiety.
+Symptoms:
+
+Persistent fatigue, sleep issues, irritability, depression.
+
+Can seriously affect both mental and physical health.
+
+⚠️ This is the most dangerous type of stress over time.
+
+🟦 Emotional Stress
+Definition:
+Stress related to strong or difficult emotions.
+Examples:
+
+Breakups, family or friendship conflicts.
+
+Loss of a loved one.
+Symptoms:
+
+Sadness, crying, anger, emotional anxiety.
+
+Difficulty concentrating or making decisions.
+
+💬 Often related to emotional or relational struggles.
+
+🟨 Physical Stress
+Definition:
+Stress caused by physical strain or imbalance in the body.
+Examples:
+
+Lack of sleep, poor diet, chronic pain.
+
+Physical exhaustion or illness.
+Symptoms:
+
+Muscle pain, headaches, fatigue, frequent sickness.
+
+The body shows warning signs.
+
+🛌 Rest and physical care are essential to reduce this stress.
