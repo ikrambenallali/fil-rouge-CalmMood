@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\StressTestController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,13 @@ Route::get('/dashboard',[UserController::class, 'index'])->name('allUsers');
 Route::delete('/dashboard/{id}', [UserController::class, 'destroy'])->name('deleteUser');
 Route::post('/dashboard/{id}', [UserController::class, 'activate'])->name('activerUser');
 Route::post('/dashboards/{id}', [UserController::class, 'desactivate'])->name('desactiverUser');
+Route::post('/stressResult', [StressTestController::class, 'store'])->name('stressResult');
+Route::get('/stress-results/{id}', [StressTestController::class, 'show'])->name('stressResult.show');
+
+Route::get('/stressResult', function () {
+    return view('utilisateurs.test');
+})->name('stress.test'); // anciennement 'stressResult'
+
 
 
 
