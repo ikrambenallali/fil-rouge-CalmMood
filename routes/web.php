@@ -23,12 +23,15 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('about.contactUs'); 
 });
-Route::get('/dashboard', function () {
-    return view('admin.dashboard'); 
-});
+Route::get('/dashboardUser', function () {
+    return view('utilisateurs.dashboardUser');
+})->name('dashboardUser'); 
+
 Route::get('/typeStress', function () {
     return view('utilisateurs.typeStress'); 
-});
+})->name('typeStress');
+
+
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
 // dashboard routes
 Route::get('/dashboard',[UserController::class, 'index'])->name('allUsers');

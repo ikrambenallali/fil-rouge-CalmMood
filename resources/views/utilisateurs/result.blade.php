@@ -72,8 +72,13 @@
         <p class="text-center text-lg">Your main type of stress is:</p>
         <p class="text-center text-xl font-bold text-[#C447AF] mt-2">{{ ucfirst($result->main_type) }}</p>
     </div>
+    
 </div>
-
+<!-- <div class="flex justify-end " >
+<a href="{{ route('dashboardUser') }}" class="mt-6 block text-center text-white bg-[#C447AF] hover:bg-[#E192D4] rounded-lg py-2 px-4 transition duration-300">
+        dashboard
+    </a>
+</div> -->
 
 
 </body>
