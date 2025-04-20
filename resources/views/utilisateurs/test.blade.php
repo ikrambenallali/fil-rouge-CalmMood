@@ -7,17 +7,27 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-6 rounded-xl shadow-md max-w-xl w-full">
-        <h1 class="text-2xl font-bold mb-4 text-center">🧠 What Is Your Main Type of Stress?</h1>
-
-        <div id="quizContainer"></div>
-
-        <div class="flex justify-end mt-4">
-            <button id="nextBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Next</button>
-        </div>
+<body class="bg-[#FBF4FA] min-h-screen flex items-center justify-center">
+    <div class="flex flex-col md:flex-row gap-6">
+    <div class="bg-[#FBF4FA] p-6 rounded-xl  max-w-3xl w-full">
+    <div class="flex justify-center mb-6">
+      <img class="w-[40%] -mb-2 -mt-2" src="{{ asset('storage/images/logo.png') }}" alt="logo">
     </div>
+    <h1 class="text-2xl text-[#C447AF] font-bold mb-6 text-center">     
+      What Is Your Main Type of Stress?
+    </h1>
+    <div id="quizContainer"></div>
 
+    <div class="flex justify-end mt-4">
+        <button id="nextBtn" class="bg-[#C447AF] text-white px-4 py-2 rounded ">Next</button>
+    </div>
+</div>
+
+    <div class="">
+    <img class="w-full -my-12" src="{{ asset('storage/images/photo5.png') }}" alt="logo">
+
+    </div>
+    </div>
     <script>
        const questions = [
     {

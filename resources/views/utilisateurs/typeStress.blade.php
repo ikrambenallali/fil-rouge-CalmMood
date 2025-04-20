@@ -71,7 +71,7 @@
   <!-- CTA en dehors de la grille -->
   <div class="mt-12 text-center">
     <p class="text-xl font-medium mb-6">Do you know your type of stress?</p>
-    <a href="/stress-test" class="inline-block bg-[#C447AF] text-white text-lg font-semibold px-6 py-3 rounded-full">
+    <a href="{{ route('stress.test') }}" class="inline-block bg-[#C447AF] text-white text-lg font-semibold px-6 py-3 rounded-full">
       Take the Stress Test
     </a>
   </div>
