@@ -22,7 +22,6 @@ class AuthController extends Controller
             'password' => 'required|confirmed'
         ]);
         $isFirstUser = User::count() == 0;
-        // dd($isFirstUser);
         $role = $isFirstUser ? 'admin' : 'user';
 
         $user = User::create([
@@ -33,8 +32,13 @@ class AuthController extends Controller
         ]);
         $token = $user->createToken($request->name);
         $user->notify(new UserNotification());
+if($role == 'admin'){
+    return redirect(route('dashboard'));
 
-        return redirect(route('dashboard'));
+    }else{
+        return redirect(route('typeStress'));
+    }
+       
     }
     public function showLoginForm()
     {
@@ -62,9 +66,14 @@ class AuthController extends Controller
 
         $token = $user->createToken($user->name);
 
-
-        return redirect(url('dashboard'));
-    }
+$role = $user->role;
+        if($role == 'admin'){
+            return redirect(route('allUsers'));
+        
+            }else{
+                return redirect(route('typeStress'));
+            }
+                   }
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();

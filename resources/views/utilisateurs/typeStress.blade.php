@@ -18,14 +18,17 @@
 <body class="bg-[#FBF4FA] text-[#C447AF] font-sans">
 
   <div class="max-w-5xl mx-auto py-12 px-6">
+    
     <h1 class="text-4xl font-bold text-center mb-10 text-[#]">Types of Stress</h1>
 
     
     <!-- Grille des cartes -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+ 
     <!-- Card 1 -->
     <div class="relative p-6 rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 overflow-hidden">
       <div class="absolute inset-0 bg-cover bg-center opacity-50 z-0" style="background-image: url('{{ asset('storage/images/image1.jpg') }}');"></div>
+      
       <div class="relative z-10">
         <h2 class="text-[#C447AF] font-bold text-2xl font-semibold mb-2 text-shadow-lg">Acute Stress</h2>
         <p class="text-black text-lg">
