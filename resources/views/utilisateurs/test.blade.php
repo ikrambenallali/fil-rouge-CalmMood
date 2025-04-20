@@ -8,26 +8,20 @@
 
 </head>
 <body class="bg-[#FBF4FA] min-h-screen flex items-center justify-center">
-    <div class="flex flex-col md:flex-row gap-6">
-    <div class="bg-[#FBF4FA] p-6 rounded-xl  max-w-3xl w-full">
-    <div class="flex justify-center mb-6">
-      <img class="w-[40%] -mb-2 -mt-2" src="{{ asset('storage/images/logo.png') }}" alt="logo">
-    </div>
-    <h1 class="text-2xl text-[#C447AF] font-bold mb-6 text-center">     
-      What Is Your Main Type of Stress?
-    </h1>
-    <div id="quizContainer"></div>
+    <div class="bg-white rounded-lg shadow-md p-6 max-w-md w-full mx-auto">
+        <h2 class="text-xl font-bold text-[#C447AF] mb-4 text-center">What Is Your Main Type of Stress?</h2>
 
-    <div class="flex justify-end mt-4">
-        <button id="nextBtn" class="bg-[#C447AF] text-white px-4 py-2 rounded ">Next</button>
-    </div>
-</div>
+        <!-- Question -->
+        <div id="quizContainer">
+            <!-- Dynamically rendered questions will appear here -->
+        </div>
 
-    <div class="">
-    <img class="w-full -my-12" src="{{ asset('storage/images/photo5.png') }}" alt="logo">
+        <!-- Next Button -->
+        <div class="flex justify-end mt-6">
+            <button id="nextBtn" class="bg-[#C447AF] text-white px-4 py-2 rounded-full">Next</button>
+        </div>
+    </div>
 
-    </div>
-    </div>
     <script>
        const questions = [
     {
@@ -131,13 +125,15 @@ let currentQuestion = 0;
         function renderQuestion() {
             const q = questions[currentQuestion];
             container.innerHTML = `
-                <p class="mb-4 font-semibold">Q${currentQuestion + 1}. ${q.text}</p>
-                <div class="space-y-3">
+                <p class="mb-4 font-semibold text-[#C447AF]">Q${currentQuestion + 1}. ${q.text}</p>
+                <div class="space-y-4">
                     ${q.options.map((opt, i) => `
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="answer" value="${opt.type}" class="form-radio text-blue-600">
-                            <span>${opt.text}</span>
-                        </label>
+                        <div class="bg-[#FBF4FA] p-4 rounded-lg shadow-md cursor-pointer hover:bg-[#E192D4]">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="answer" value="${opt.type}" class="form-radio text-blue-600">
+                                <span class="text-[#C447AF]">${opt.text}</span>
+                            </label>
+                        </div>
                     `).join('')}
                 </div>
             `;
@@ -156,48 +152,36 @@ let currentQuestion = 0;
             if (currentQuestion < questions.length) {
                 renderQuestion();
             } else {
-                // Fin du test – Calculer les scores
-                const scores = {
-                    acute: 0,
-                    chronic: 0,
-                    emotional: 0,
-                    physical: 0,
-                };
+                // Final stage – Send data to Laravel backend
+                const scores = { acute: 0, chronic: 0, emotional: 0, physical: 0 };
                 answers.forEach(type => {
                     scores[type]++;
                 });
 
                 const mainType = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
 
-                // Envoyer à Laravel via fetch
                 fetch("{{ route('stressResult') }}", {
-    method: "POST",
-    headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-    },
-    body: JSON.stringify({
-        acute: scores.acute,
-        chronic: scores.chronic,
-        emotional: scores.emotional,
-        physical: scores.physical,
-        main_type: mainType
-    })
-})
-.then(res => {
-    if (!res.ok) {
-        return res.text().then(text => { throw new Error(text) });
-    }
-    return res.json();
-})
-.then(data => {
-    window.location.href = `/stress-results/${data.id}`;
-})
-.catch(error => {
-    console.error("Erreur lors de l'envoi des données :", error);
-    alert("Une erreur s'est produite. Vérifie la console.");
-});
-
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        acute: scores.acute,
+                        chronic: scores.chronic,
+                        emotional: scores.emotional,
+                        physical: scores.physical,
+                        main_type: mainType
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    window.location.href = `/stress-results/${data.id}`;
+                })
+                .catch(error => {
+                    console.error("Error sending data:", error);
+                    alert("An error occurred. Please check the console.");
+                });
             }
         });
 
