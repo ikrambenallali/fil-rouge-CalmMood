@@ -13,6 +13,7 @@ class AdviceController extends Controller
      */
     public function index()
     {
+        // taranard kochi 
         $advices = Advice::all();
         return view('admin.advice',compact('advices'));
     }
