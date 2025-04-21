@@ -13,7 +13,6 @@ class AdviceController extends Controller
      */
     public function index()
     {
-        // taranard kochi 
         $user = auth()->user();
         $advices = Advice::all();
         return view('admin.advice',compact('advices'));
@@ -104,6 +103,12 @@ class AdviceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $advice = Advice::findOrFail($id);
+        if ($advice->image) {
+            Storage::disk('public')->delete($advice->image);
+        }
+        $advice->delete();
+    
+        return redirect()->back()->with('success', 'Conseil supprimé avec succès'); 
     }
 }

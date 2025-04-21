@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdviceController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StressTestController;
 use App\Http\Controllers\UserController;
@@ -35,6 +36,7 @@ Route::get('/advice', function () {
     return view('admin.advice'); 
 })->name('advice');
 
+
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
 // dashboard routes
 Route::get('/dashboard',[UserController::class, 'index'])->name('allUsers');
@@ -48,6 +50,10 @@ Route::post('/advice', [AdviceController::class, 'store'])->name('createAdvice')
 // Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('updateAdvice');
 Route::get('/advice', [AdviceController::class, 'index'])->name('advice');
 Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('advice.update');
+Route::delete('/advice/{id}', [AdviceController::class, 'destroy'])->name('advice.destroy');
+
+Route::resource('categories', CategoryController::class);
+// Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
 
 Route::get('/stressResult', function () {
@@ -60,3 +66,5 @@ Route::get('/stressResult', function () {
 Route::post('/logout', function () {
     return view('authentification.login'); 
 })->name('logout');
+
+
