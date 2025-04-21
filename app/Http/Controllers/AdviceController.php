@@ -13,7 +13,6 @@ class AdviceController extends Controller
      */
     public function index()
     {
-        // taranard kochi 
         $user = auth()->user();
         $advices = Advice::all();
         return view('admin.advice',compact('advices'));
