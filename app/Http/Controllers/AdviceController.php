@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advice;
-use Illuminate\Container\Attributes\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdviceController extends Controller
 {
@@ -14,6 +14,7 @@ class AdviceController extends Controller
     public function index()
     {
         // taranard kochi 
+        $user = auth()->user();
         $advices = Advice::all();
         return view('admin.advice',compact('advices'));
     }
