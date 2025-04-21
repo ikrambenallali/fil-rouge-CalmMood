@@ -23,60 +23,54 @@
             + Add Tip
         </button>
 
-        <!-- Tableau des conseils -->
-        <div class="overflow-x-auto bg-white rounded-xl shadow-md">
-            <table class="w-full text-left">
-                <thead class="bg-[#E192D4] text-white">
-                    <tr>
-                        <th class="p-3">ID</th>
-                        <th class="p-3">Title</th>
-                        <th class="p-3">Content</th>
-                        <th class="p-3">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Exemple d'entrée (à boucler avec Blade ou autre) -->
-                    <tr class="border-b hover:bg-pink-50">
-                        <td class="p-3">1</td>
-                        <td class="p-3">Respirez profondément</td>
-                        <td class="p-3">Prenez une minute pour respirer profondément et vous recentrer.</td>
-                        <td class="p-3 space-x-2">
-                            <button onclick="openModal()"
-                                class="text-black">
-                                <ion-icon name="create-outline"></ion-icon>
-                            </button>
-                            <button class="text-black">
-                                <ion-icon name="trash-outline"></ion-icon>
-                                </button>
-                        </td>
-                    </tr>
-                    <!-- Fin exemple -->
-                </tbody>
-            </table>
+      <!-- Tableau des conseils -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    @foreach ($advices as $advice)
+        <div class="bg-white rounded-2xl shadow-md p-4 flex flex-col justify-between hover:shadow-lg transition">
+            <img src="{{ asset('storage/' . $advice->image) }}" alt="Image" class="h-40 w-full object-cover rounded-xl mb-4">
+            <h3 class="text-xl font-semibold text-[#C447AF] mb-2">{{ $advice->title }}</h3>
+            <p class="text-gray-700 mb-4">{{ $advice->content }}</p>
+            <div class="flex justify-end space-x-3">
+                <button onclick="openModal()" class="text-[#C447AF] hover:text-[#A93B95] text-xl">
+                    <ion-icon name="create-outline"></ion-icon>
+                </button>
+                <button class="text-red-500 hover:text-red-600 text-xl">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </button>
+            </div>
         </div>
+    @endforeach
+</div>
+
     </div>
 
     <!-- Modal (caché par défaut) -->
+     <form id="adviceForm" action="{{ route('createAdvice') }}" method="POST" enctype="multipart/form-data" >
+        @csrf
     <div id="adviceModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
         <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-lg">
             <h2 class="text-2xl font-semibold text-[#C447AF] mb-4">Ajouter / Modifier un conseil</h2>
 
-            <form>
                 <div class="mb-4">
-                    <label class="block mb-1 font-medium">Titre</label>
-                    <input type="text"
+                    <label class="block mb-1 font-medium">Title</label>
+                    <input type="text" name="title" placeholder="title"
                         class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E192D4]" />
                 </div>
                 <div class="mb-4">
-                    <label class="block mb-1 font-medium">Contenu</label>
-                    <textarea
+                    <label class="block mb-1 font-medium">Content</label>
+                    <textarea name="content" placeholder="content"
                         class="w-full border border-gray-300 rounded-xl px-3 py-2 h-32 resize-none focus:outline-none focus:ring-2 focus:ring-[#E192D4]"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-1 font-medium">Image</label>
+                    <input type="file" name="image"
+                        class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E192D4]" />
                 </div>
                 <div class="flex justify-end space-x-2">
                     <button type="button" onclick="closeModal()"
-                        class="px-4 py-2 bg-gray-200 rounded-xl hover:bg-gray-300">Annuler</button>
+                        class="px-4 py-2 bg-gray-200 rounded-xl hover:bg-gray-300">Cancel</button>
                     <button type="submit"
-                        class="px-4 py-2 bg-[#C447AF] text-white rounded-xl hover:bg-[#A93B95]">Enregistrer</button>
+                        class="px-4 py-2 bg-[#C447AF] text-white rounded-xl hover:bg-[#A93B95]">Save</button>
                 </div>
             </form>
         </div>

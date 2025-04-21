@@ -53,7 +53,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+                        <a href="{{ route('advice') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
 
                             <ion-icon name="bulb-outline"></ion-icon>
                             <i class="fas fa-comment-medical mr-3"></i> Anti-Stress Tips

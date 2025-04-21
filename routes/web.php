@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdviceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StressTestController;
@@ -30,7 +31,9 @@ Route::get('/dashboardUser', function () {
 Route::get('/typeStress', function () {
     return view('utilisateurs.typeStress'); 
 })->name('typeStress');
-
+Route::get('/advice', function () {
+    return view('admin.advice'); 
+})->name('advice');
 
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
 // dashboard routes
@@ -40,6 +43,10 @@ Route::post('/dashboard/{id}', [UserController::class, 'activate'])->name('activ
 Route::post('/dashboards/{id}', [UserController::class, 'desactivate'])->name('desactiverUser');
 Route::post('/stressResult', [StressTestController::class, 'store'])->name('stressResult');
 Route::get('/stress-results/{id}', [StressTestController::class, 'show'])->name('stressResult.show');
+Route::post('/advice', [AdviceController::class, 'store'])->name('createAdvice');
+// Route::post('/advice', [AdviceController::class, 'index'])->name('advice');
+Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('updateAdvice');
+Route::get('/advice', [AdviceController::class, 'index'])->name('advice');
 
 Route::get('/stressResult', function () {
     return view('utilisateurs.test');
