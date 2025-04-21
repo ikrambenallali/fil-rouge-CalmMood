@@ -45,8 +45,10 @@ Route::post('/stressResult', [StressTestController::class, 'store'])->name('stre
 Route::get('/stress-results/{id}', [StressTestController::class, 'show'])->name('stressResult.show');
 Route::post('/advice', [AdviceController::class, 'store'])->name('createAdvice');
 // Route::post('/advice', [AdviceController::class, 'index'])->name('advice');
-Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('updateAdvice');
+// Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('updateAdvice');
 Route::get('/advice', [AdviceController::class, 'index'])->name('advice');
+Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('advice.update');
+
 
 Route::get('/stressResult', function () {
     return view('utilisateurs.test');
