@@ -31,7 +31,7 @@
                         <button onclick="openEditModal({{ $advice->id }})" class="text-[#C447AF] hover:text-[#A93B95] text-xl">
                             <ion-icon name="create-outline"></ion-icon>
                         </button>
-                        <form action="" method="POST">
+                        <form action="{{ route('advice.destroy',$advice->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-600 text-xl">

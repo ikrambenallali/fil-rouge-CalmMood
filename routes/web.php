@@ -48,6 +48,7 @@ Route::post('/advice', [AdviceController::class, 'store'])->name('createAdvice')
 // Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('updateAdvice');
 Route::get('/advice', [AdviceController::class, 'index'])->name('advice');
 Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('advice.update');
+Route::delete('/advice/{id}', [AdviceController::class, 'destroy'])->name('advice.destroy');
 
 
 Route::get('/stressResult', function () {
