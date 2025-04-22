@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Type_stress;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TypeStressController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin/categories', compact('categories'));
+        // $user = auth()->user();
+        $types = Type_stress::all();
+        return view('typeStress', compact('types'));
     }
 
     /**
@@ -21,7 +22,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+       
+      
     }
 
     /**
@@ -29,11 +31,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['name' => 'required|string|max:255']);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'content' => 'required|string|max:255',
+        ]);
 
-        Category::create($request->only('name'));
+        Type_stress::create([
+            'name' => $request->name,
+            'content' => $request->content,
+        ]);
 
-        return redirect()->back()->with('success', 'Catégorie ajoutée avec succès.');
+        return redirect()->back();
     }
 
     /**
@@ -59,17 +67,17 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'content' => 'required|string|max:255',
         ]);
 
-        $category = Category::findOrFail($id);
+        $type = Type_stress::findOrFail($id);
 
+        $type->name = $request->name;
+        $type->content = $request->content;
 
-        $category->name = $request->name;
+        $type->save();
 
-
-        $category->save();
-
-        return redirect()->back()->with('success', 'category mis à jour avec succès');
+        return redirect()->back();
     }
 
     /**
@@ -77,8 +85,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect()->back()->with('success', 'Catégorie supprimée avec succès.');
+        $type = Type_stress::findOrFail($id);
+        $type->delete();
+        return redirect()->back();
     }
 }
