@@ -15,15 +15,14 @@ class AdviceController extends Controller
     {
         $user = auth()->user();
         $advices = Advice::all();
-        return view('admin.advice',compact('advices'));
+        return view('admin.advice', compact('advices'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -46,10 +45,9 @@ class AdviceController extends Controller
 
         ]);
 
-      
+
 
         return redirect()->back();
-    
     }
 
     /**
@@ -78,9 +76,9 @@ class AdviceController extends Controller
             'content' => 'required|string|max:255',
             'image' => ['nullable', 'image'], // image facultative lors de l'update
         ]);
-    
+
         $advice = Advice::findOrFail($id);
-    
+
         if ($request->hasFile('image')) {
             // Supprimer l'ancienne image s'il y en a une
             if ($advice->image) {
@@ -89,14 +87,14 @@ class AdviceController extends Controller
             $imagepath = $request->file('image')->store('advices', 'public');
             $advice->image = $imagepath;
         }
-    
+
         $advice->title = $request->title;
         $advice->content = $request->content;
         $advice->save();
-    
+
         return redirect()->back()->with('success', 'Conseil mis à jour avec succès');
     }
-    
+
 
     /**
      * Remove the specified resource from storage.
@@ -108,7 +106,7 @@ class AdviceController extends Controller
             Storage::disk('public')->delete($advice->image);
         }
         $advice->delete();
-    
-        return redirect()->back()->with('success', 'Conseil supprimé avec succès'); 
+
+        return redirect()->back()->with('success', 'Conseil supprimé avec succès');
     }
 }

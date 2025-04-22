@@ -12,7 +12,7 @@
         <h2 class="text-3xl font-bold text-[#C447AF] mb-4">Résultat du test de stress</h2>
         
         <p class="text-xl text-gray-700 mb-2">Type de stress principal détecté :</p>
-        <h3 class="text-2xl font-semibold text-[#DD6ECA] mb-6">Stress émotionnel 🧠💓</h3>
+        <h3 class="text-2xl font-semibold text-[#DD6ECA] mb-6">Stress émotionnel </h3>
         
         <p class="mb-4 text-gray-600">👉 Exercice recommandé : <span class="font-semibold">Respiration 4-7-8 </span></p>
         

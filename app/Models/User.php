@@ -51,4 +51,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function stressResult()
+{
+    return $this->hasOne(StressResult::class);
+}
 }

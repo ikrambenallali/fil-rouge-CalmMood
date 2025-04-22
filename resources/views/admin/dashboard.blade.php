@@ -68,6 +68,7 @@
                             <ion-icon name="help-circle-outline"></ion-icon>
                             <i class="fas fa-question-circle mr-3"></i> Types of Stress
                         </a>
+                    </li>
 
                 </ul>
 
