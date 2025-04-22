@@ -63,6 +63,11 @@
                         <ion-icon name="bulb-outline"></ion-icon>
                         <i class="fas fa-comment-medical mr-3"></i> Categories
                     </a>
+                    <li class="mb-4">
+                        <a href="{{ route('type_stress.index') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+                            <ion-icon name="help-circle-outline"></ion-icon>
+                            <i class="fas fa-question-circle mr-3"></i> Types of Stress
+                        </a>
 
                 </ul>
 

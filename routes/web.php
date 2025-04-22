@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StressTestController;
+use App\Http\Controllers\TypeStressController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,13 @@ Route::get('/typeStress', function () {
 Route::get('/advice', function () {
     return view('admin.advice'); 
 })->name('advice');
+Route::get('/respirationEquilibre', function () {
+    return view('admin.respiration.RespirationEquilibre'); 
+})->name('respirationEquilibre');
+
+Route::get('/respiration478', function () {
+    return view('admin.respiration.Respiration478'); 
+})->name('respiration478');
 
 
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
@@ -53,6 +61,9 @@ Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('advice.up
 Route::delete('/advice/{id}', [AdviceController::class, 'destroy'])->name('advice.destroy');
 
 Route::resource('categories', CategoryController::class);
+Route::resource('type_stress', TypeStressController::class);
+
+
 // Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
 
