@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Notifications\UserNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -31,14 +32,14 @@ class AuthController extends Controller
             'role' => $role
         ]);
         $token = $user->createToken($request->name);
-        $user->notify(new UserNotification());
-if($role == 'admin'){
-    return redirect(route('dashboard'));
+        Auth::login($user);
 
-    }else{
-        return redirect(route('typeStress'));
-    }
-       
+        $user->notify(new UserNotification());
+        if ($role == 'admin') {
+            return redirect(route('dashboard'));
+        } else {
+            return redirect(route('typeStress'));
+        }
     }
     public function showLoginForm()
     {
@@ -65,39 +66,22 @@ if($role == 'admin'){
         }
 
         $token = $user->createToken($user->name);
+        Auth::login($user);
 
-$role = $user->role;
-        if($role == 'admin'){
+        $role = $user->role;
+        if ($role == 'admin') {
             return redirect(route('allUsers'));
-        
-            }else{
-                return redirect(route('typeStress'));
-            }
-                   }
+        } else {
+            return redirect(route('typeStress'));
+        }
+    }
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
+        Auth::logout();
 
-        return [
-            'message' => 'You are logged out.'
-        ];
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect(route('loginForme'));
     }
-    // <form action="/logout" method="POST">
-    // @csrf <!-- Token CSRF pour la sécurité -->
-    // <button type="submit" class="bg-[#DD6ECA] text-[#FBF4FA] w-[100px] h-[40px] m-8 font-bold rounded-md">
-    // Logout
-    // </button>
-    // </form>
-    // public function showDashboard()
-    // {
-    //     $user = auth()->user(); 
-
-    //     if ($user->role === 'admin') {
-    //         return redirect()->route('admin.dashboard'); 
-    //     }
-
-    //     // $users = User::all(); 
-    //     // return view('admin.dashboard', compact('users'));
-    // }
-
 }
