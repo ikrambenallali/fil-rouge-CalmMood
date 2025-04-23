@@ -15,6 +15,10 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('admin/categories', compact('categories'));
     }
+    public function showcatEx(){
+        $categories = Category::all();
+        return view('admin/categoryEx', compact('categories'));
+    }
 
     /**
      * Show the form for creating a new resource.

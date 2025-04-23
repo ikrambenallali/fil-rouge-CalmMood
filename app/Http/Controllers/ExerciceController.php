@@ -15,13 +15,21 @@ class ExerciceController extends Controller
      */
     public function index()
     {
-        dd(Auth::user());
+        // dd(Auth::user());
         $user = User::findorFail(2);
         // return $user->stressResult->main_type;
         $categories = Category::all();
         $exercices = Exercice::with('category')->get();
         return view('admin/exercices', compact('exercices', 'categories', 'user'));
     }
+    public function parCategorie($id)
+{
+    $category = Category::findOrFail($id);
+    $exercices = $category->exercices; // Assure-toi que la relation est définie
+
+    return view('admin/allex', compact('category', 'exercices'));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -56,7 +64,11 @@ class ExerciceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {}
+    public function show(string $id) {
+
+        $exercices = Exercice::findOrFail($id);
+        return view('admin/respiration/exrespiration', compact('exercices'));
+    }
 
 
     /**
