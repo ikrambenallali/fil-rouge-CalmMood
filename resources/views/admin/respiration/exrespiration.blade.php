@@ -16,10 +16,8 @@
         <h3 class="text-2xl font-semibold text-[#DD6ECA] mb-6">{{ $user->stressResult->main_type ?? 'Non détecté' }}
 
         </h3>
- 
-        @foreach ($exercices as $exercice)
-        <p class="mb-4 text-gray-600">👉 Exercice recommandé : <span class="font-semibold">{{ $exercice->title }}</span></p>
-        @endforeach
+
+        <p class="mb-4 text-gray-600">👉 Exercice recommandé : <span class="font-semibold">{{ $exercices->title }}</span></p>
         <div id="breath-circle" class="w-48 h-48 rounded-full border-4 border-[#E192D4] flex items-center justify-center text-xl font-bold text-[#C447AF] mx-auto mb-6">
             Inspire
         </div>
@@ -33,16 +31,15 @@
         <p class="text-sm text-gray-500">Suivez le rythme pendant 2 minutes pour apaiser votre esprit ✨</p>
 
     </div>
-    @foreach ($exercices as $exercice)
 
-    @if($exercice->video_url)
+    @if($exercices->video_url)
     <video width="320" height="240" controls>
         <source src="https://youtu.be/mXxhVVG6rI4?si=A316dBGGn-wsx4yV" type="video/mp4">
         Votre navigateur ne supporte pas la lecture vidéo.
     </video>
     @endif
 
-    @if(!$exercice->video_url)
+    @if(!$exercices->video_url)
     <audio id="exercice-audio" controls class="relative z-10  hidden" autoplay>
         <source src="{{ asset('storage/audio/audio1.mp3') }}" type="audio/mpeg">
         <source src="{{ asset('storage/audio/audio1.mp3') }}" type="audio/ogg">
@@ -50,9 +47,8 @@
     </audio>
     @endif
 
-    @endforeach
     <script>
-    {!! $exercice->animation_script !!}
+    {!! $exercices->animation_script !!}
     document.getElementById('start-exercice')?.addEventListener('click', () => {
         const audio = document.getElementById('exercice-audio');
         audio?.play();

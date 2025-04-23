@@ -56,6 +56,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/respiration478', function () {
         return view('admin.respiration.Respiration478');
     })->name('respiration478');
+    Route::get('/categoryEx', [CategoryController::class,'showcatEx'])->name('categoryEx');
+    Route::get('/admin/exercices/categorie/{id}', [ExerciceController::class, 'parCategorie'])->name('exercices.parCategorie');
+
 });
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::post('/stressResult', [StressTestController::class, 'store'])->name('stressResult');
