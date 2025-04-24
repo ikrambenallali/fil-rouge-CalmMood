@@ -51,15 +51,16 @@
             </iframe>
         </div>
         @endif
-        @if ($exercices->category->name == 'Meditation' && !$exercices->vedio_url)
-        <div class="aspect-w-16 aspect-h-9 mb-6">
-            <img src="{{asset('storage/images/photo10.png')}}">
-            <audio id="exercice-audio" controls class="relative z-10 hidden" autoplay>
-                <source src="{{ asset('storage/audio/audio2.mp3') }}" type="audio/mpeg">
-                Votre navigateur ne supporte pas la lecture audio.
-            </audio>
-        </div>
-        @endif
+        @if ($exercices->category->name == 'Meditation' && !$exercices->video_url)
+    <div class="aspect-w-8 aspect-h-4 mb-6 flex justify-center">
+        <img class="w-1/2 " src="{{ asset('storage/images/photo10.png') }}">
+        <audio id="exercice-audio" controls class="relative z-10 hidden" autoplay>
+            <source src="{{ asset('storage/audio/audio2.mp3') }}" type="audio/mpeg">
+            Votre navigateur ne supporte pas la lecture audio.
+        </audio>
+    </div>
+@endif
+
 
 
         <p class="text-sm text-gray-500">Follow the rhythm for 2 minutes to calm your mind </p>
