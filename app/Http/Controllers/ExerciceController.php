@@ -49,10 +49,10 @@ class ExerciceController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            'duration' => 'required|integer|min:1',
             'video_url' => 'nullable|url|max:255',
             'audio_url' => 'nullable|url|max:255',
-            'animation_script' => 'nullable|string',
+            'respiration_data'=>'nullable|json',
+
         ]);
 
         Exercice::create($validated);
@@ -94,4 +94,6 @@ class ExerciceController extends Controller
     {
         //
     }
+
+
 }

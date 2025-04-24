@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->integer('duration')->nullable(); 
             $table->string('video_url')->nullable(); 
+            $table->json('respiration_data')->nullable();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });

@@ -11,9 +11,8 @@ class Exercice extends Model
         'title',
         'description',
         'category_id',
-        'duration',
         'video_url',
-        'animation_script',
+        'respiration_data',
         'audio_url',
     ];
 
@@ -21,4 +20,10 @@ class Exercice extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function getYoutubeId($url)
+    {
+        preg_match('/(youtu\.be\/|watch\?v=|embed\/)([^\?&"\'<>]+)/', $url, $matches);
+        return $matches[2] ?? null;
+    }
+    
 }

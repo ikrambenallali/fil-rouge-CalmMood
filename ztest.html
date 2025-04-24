@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Breathing Circle</title>
+    <style>
+        /* Adding some initial transition properties */
+        #breath-circle {
+            transition: transform 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div id="breath-circle"
+        class="w-48 h-48 rounded-full border-4 border-purple-400 flex items-center justify-center text-xl font-bold text-purple-600 mx-auto mb-6">
+        Breathe
+    </div>
+
+    <div class="mt-4 text-gray-700">
+        <button id="start-btn" class="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">Start
+            Breathing</button>
+    </div>
+
+    <script>
+        const breathCircle = document.getElementById('breath-circle');
+        const startBtn = document.getElementById('start-btn');
+        let breathingInterval;
+
+        function startBreathing(inspireDuration, retainDuration, expireDuration) {
+            const inspireMs = inspireDuration * 1000;
+            const retainMs = retainDuration * 1000;
+            const expireMs = expireDuration * 1000;
+            const totalCycle = inspireMs + retainMs + expireMs;
+
+            // Important fix: First set transition to none, then modify scale in next frame
+            breathCircle.style.transition = 'none';
+            breathCircle.style.transform = 'scale(1)';
+            breathCircle.textContent = 'Inspire';
+
+            // Force browser to recognize the reset state before starting animation
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    // Now apply the transition for inspire phase
+                    breathCircle.style.transition = `transform ${inspireDuration}s ease-in-out`;
+                    breathCircle.style.transform = 'scale(1.5)';
+
+                    // Retain phase
+                    setTimeout(() => {
+                        breathCircle.textContent = 'Retain';
+                    }, inspireMs);
+
+                    // Expire phase
+                    setTimeout(() => {
+                        breathCircle.textContent = 'Expire';
+                        breathCircle.style.transition = `transform ${expireDuration}s ease-in-out`;
+                        breathCircle.style.transform = 'scale(1)';
+                    }, inspireMs + retainMs);
+                });
+            });
+
+            // Schedule the next cycle
+            return setTimeout(() => {
+                startBreathing(inspireDuration, retainDuration, expireDuration);
+            }, totalCycle);
+        }
+
+        startBtn.addEventListener('click', function () {
+            if (breathingInterval) {
+                clearTimeout(breathingInterval);
+            }
+            breathingInterval = startBreathing(4, 2, 6);
+            this.textContent = "Restart Breathing";
+        });
+    </script>
+</body>
+
+</html>
