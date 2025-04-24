@@ -51,6 +51,16 @@
             </iframe>
         </div>
         @endif
+        @if ($exercices->category->name == 'Meditation' && !$exercices->vedio_url)
+        <div class="aspect-w-16 aspect-h-9 mb-6">
+            <img src="{{asset('storage/images/photo10.png')}}">
+            <audio id="exercice-audio" controls class="relative z-10 hidden" autoplay>
+                <source src="{{ asset('storage/audio/audio2.mp3') }}" type="audio/mpeg">
+                Votre navigateur ne supporte pas la lecture audio.
+            </audio>
+        </div>
+        @endif
+
 
         <p class="text-sm text-gray-500">Follow the rhythm for 2 minutes to calm your mind </p>
 
@@ -64,17 +74,25 @@
     </audio>
     @endif
     <script>
-        const respirationData = @json($exercices -> respiration_data);
-        console.log(respirationData);
+        const respirationData = @json($exercices -> respiration_data ?? []);
 
-        console.log(respirationData);
+        let parsedData = respirationData;
+        if (typeof respirationData === 'string') {
+            try {
+                parsedData = JSON.parse(respirationData);
+                console.log("Parsed data:", parsedData);
+            } catch (e) {
+                console.error("Error parsing respirationData:", e);
+            }
+        }
 
         startBtn = document.getElementById('start-exercice');
+        console.log("StartBtn:", startBtn);
+
         startBtn?.addEventListener('click', () => {
             const audio = document.getElementById('exercice-audio');
             audio?.play();
         });
-
 
         const stopBtn = document.getElementById('stop-exercice');
         const audio = document.getElementById('exercice-audio');
@@ -93,10 +111,18 @@
             stopBtn.classList.add('hidden');
             startBtn.classList.remove('hidden');
         });
+
         const breathCircle = document.getElementById('breath-circle');
         let breathingInterval;
 
-        function startBreathing(inspireDuration, retainDuration, expireDuration) {
+
+
+        function startBreathing() {
+
+            const inspireDuration = parsedData.inspireDuration || 0;
+            const retainDuration = parsedData.retainDuration || 0;
+            const expireDuration = parsedData.expireDuration || 0;
+
             const inspireMs = inspireDuration * 1000;
             const retainMs = retainDuration * 1000;
             const expireMs = expireDuration * 1000;
@@ -132,10 +158,15 @@
             if (breathingInterval) {
                 clearTimeout(breathingInterval);
             }
-            breathingInterval = startBreathing(4, 2, 6);
+            breathingInterval = startBreathing(
+                respirationData.inspireDuration,
+                respirationData.retainDuration,
+                respirationData.expireDuration
+            );
             this.textContent = "Restart Breathing";
         });
     </script>
+
 
 </body>
 
