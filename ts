@@ -243,3 +243,113 @@ Route::get('/stressResult', function () {
 Route::post('/logout', function () {
     return view('authentification.login'); 
 })->name('logout');
+
+
+
+
+@php
+        $youtubeId = $exercices->getYoutubeId($exercices->video_url);
+        @endphp
+
+        @if ($exercices->category->name == 'Meditation' && $youtubeId)
+        <div class="aspect-w-16 aspect-h-9 mb-6">
+            <iframe class="w-full h-64 mx-auto rounded-xl"
+                src="https://www.youtube.com/embed/{{ $youtubeId }}"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        @endif
+
+
+        <!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat du test de stress</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-[#FBF4FA] flex flex-col items-center justify-center text-center p-6">
+
+    <div class="bg-white shadow-xl rounded-2xl p-8 max-w-xl w-full border-4 border-[#C447AF]">
+
+
+
+        </h3>
+
+        <p class="mb-8 text-gray-600"> Recommended exercise : <span class="font-semibold">{{ $exercices->title }}</span></p>
+        @if ($exercices->category->name == 'Breathing')
+
+        <div id="breath-circle" class="w-48 h-48 rounded-full border-4 border-[#E192D4] flex items-center justify-center text-xl font-bold text-[#C447AF] mx-auto mb-6">
+            Inspire
+        </div>
+        @endif
+        @if ($exercices->category->name == 'Meditation'  && $exercices->video_url)
+
+        @if($exercices->video_url)
+        <video width="320" height="240" controls class="mx-auto">
+            <source src="" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture vidéo.
+        </video>
+        @endif
+        @endif
+        <button id="start-exercice" class="mb-4 bg-[#C447AF] text-white px-6 py-2 rounded-xl hover:bg-[#a93792] transition">
+            Commencer l'exercice
+        </button>
+        <button id="stop-exercice" class="mb-4 bg-red-500 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition hidden">
+            Arrêter l'exercice
+        </button>
+
+        <p class="text-sm text-gray-500">Follow the rhythm for 2 minutes to calm your mind </p>
+
+    </div>
+
+
+    @if(!$exercices->video_url)
+    <audio id="exercice-audio" controls class="relative z-10  hidden" autoplay>
+        <source src="{{ asset('storage/audio/audio1.mp3') }}" type="audio/mpeg">
+        <source src="{{ asset('storage/audio/audio1.mp3') }}" type="audio/ogg">
+        Votre navigateur ne supporte pas la lecture audio.
+    </audio>
+    @endif
+
+    <script>
+        {
+            !!$exercices -> animation_script!!
+        }
+        document.getElementById('start-exercice')?.addEventListener('click', () => {
+            const audio = document.getElementById('exercice-audio');
+            audio?.play();
+        });
+
+        const startBtn = document.getElementById('start-exercice');
+        const stopBtn = document.getElementById('stop-exercice');
+        const audio = document.getElementById('exercice-audio');
+
+        startBtn?.addEventListener('click', () => {
+            audio?.play();
+            stopBtn.classList.remove('hidden');
+            startBtn.classList.add('hidden');
+        });
+
+        stopBtn?.addEventListener('click', () => {
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+            stopBtn.classList.add('hidden');
+            startBtn.classList.remove('hidden');
+
+
+        });
+    </script>
+
+
+</body>
+
+</html>
