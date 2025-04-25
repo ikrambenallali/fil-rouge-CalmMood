@@ -68,11 +68,11 @@
             Inspire
         </div>
         <div class="mt-4 text-gray-700">
-            <button id="start-exercice" class="mb-4 bg-[#C447AF] text-white px-6 py-2 rounded-xl hover:bg-[#a93792] transition">
-                Commencer l'exercice
+            <button id="start-exercice" class="mb-4 bg-[#E192D4]  text-white px-6 py-2 rounded-xl ">
+            Start the exercise
             </button>
-            <button id="stop-exercice" class="mb-4 bg-red-500 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition hidden">
-                Arrêter l'exercice
+            <button id="stop-exercice" class="mb-4 bg-[#C447AF] text-white px-6 py-2 rounded-xl  hidden">
+            Stop exercising
             </button>
 
         </div>
