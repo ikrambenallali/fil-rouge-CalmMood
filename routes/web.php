@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExerciceController;
+use App\Http\Controllers\PositivityController;
 use App\Http\Controllers\StressTestController;
 use App\Http\Controllers\TypeStressController;
 use App\Http\Controllers\UserController;
@@ -43,6 +44,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('advice.update');
     Route::delete('/advice/{id}', [AdviceController::class, 'destroy'])->name('advice.destroy');
 
+// wanita omba3d ikhasa atharar ra user rakho 9a testir waha sf ni 
+Route::post('/positivity', [PositivityController::class, 'store'])->name('positivity');
 
 
     Route::resource('categories', CategoryController::class);
