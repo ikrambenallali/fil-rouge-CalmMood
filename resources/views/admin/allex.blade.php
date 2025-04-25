@@ -106,7 +106,7 @@
                             <form action="{{ route('exercices.destroy', $exercice->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet exercice ?')" class="inline-flex items-center px-3 py-1 bg-red-500 text-white rounded-lg btn-creative">
+                                <button type="submit"  class="inline-flex items-center px-3 py-1 bg-red-500 text-white rounded-lg btn-creative">
                                     <i class="fas fa-trash-alt mr-1 text-xs"></i>
                                     Supprimer
                                 </button>
@@ -124,6 +124,8 @@
                 </div>
                 <p class="text-gray-600 text-lg">Aucun exercice trouvé dans cette catégorie.</p>
             </div>
+<!-- modal edit -->
+          
             @endforelse
         </div>
     </div>

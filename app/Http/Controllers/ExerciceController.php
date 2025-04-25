@@ -76,7 +76,9 @@ class ExerciceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $exercice = Exercice::findOrFail($id);
+        $categories = Category::all();
+        return view('admin/updateEx', compact('exercice', 'categories'));
     }
 
     /**
@@ -84,7 +86,23 @@ class ExerciceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'video_url' => 'nullable|url|max:255',
+            'audio_url' => 'nullable|url|max:255',
+            'respiration_data' => 'nullable|json',
+        ]);
+    
+        $exercice = Exercice::findOrFail($id);
+    
+        $exercice->update($validated);
+    
+        return redirect()->route('exercices.show', $exercice->id)
+                         ->with('success', 'Exercice mis à jour avec succès.');
+
     }
 
     /**
@@ -92,6 +110,9 @@ class ExerciceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $exercice = Exercice::findOrFail($id);
+        $exercice->delete();
+
+        return redirect()->back()->with('success', 'exerice supprimé avec succès');
     }
 }

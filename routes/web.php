@@ -47,6 +47,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 // wanita omba3d ikhasa atharar ra user rakho 9a testir waha sf ni 
 Route::post('/positivity', [PositivityController::class, 'store'])->name('positivity');
 
+// orath wa athaksar testir waha daga 
+
 
     Route::resource('categories', CategoryController::class);
     Route::resource('type_stress', TypeStressController::class);
