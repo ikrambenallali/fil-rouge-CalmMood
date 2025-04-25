@@ -63,29 +63,7 @@
 
 // updateBoxBreathing();
 // setInterval(updateBoxBreathing, duration);
-const breathCircle = document.getElementById('breath-circle');
 
-    const phases = [
-        { text: 'Inspire profondément', duration: 5000, scale: 1.2 },
-        { text: 'Expire lentement', duration: 7000, scale: 1 }
-    ];
-
-    let currentPhase = 0;
-
-    function updateBreathing() {
-        const phase = phases[currentPhase];
-        breathCircle.textContent = phase.text;
-        breathCircle.style.transform = `scale(${phase.scale})`;
-        breathCircle.style.transition = `transform ${phase.duration}ms ease-in-out`;
-
-        // Planifier la prochaine phase
-        setTimeout(updateBreathing, phase.duration);
-
-        // Passer à la phase suivante
-        currentPhase = (currentPhase + 1) % phases.length;
-    }
-
-    updateBreathing();
     </script>
 </body>
 </html>

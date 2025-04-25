@@ -23,12 +23,12 @@ class ExerciceController extends Controller
         return view('admin/exercices', compact('exercices', 'categories', 'user'));
     }
     public function parCategorie($id)
-{
-    $category = Category::findOrFail($id);
-    $exercices = $category->exercices; // Assure-toi que la relation est définie
+    {
+        $category = Category::findOrFail($id);
+        $exercices = $category->exercices; // Assure-toi que la relation est définie
 
-    return view('admin/allex', compact('category', 'exercices'));
-}
+        return view('admin/allex', compact('category', 'exercices'));
+    }
 
 
     /**
@@ -51,7 +51,7 @@ class ExerciceController extends Controller
             'category_id' => 'required|exists:categories,id',
             'video_url' => 'nullable|url|max:255',
             'audio_url' => 'nullable|url|max:255',
-            'respiration_data'=>'nullable|json',
+            'respiration_data' => 'nullable|json',
 
         ]);
 
@@ -64,8 +64,8 @@ class ExerciceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {
-
+    public function show(string $id)
+    {
         $exercices = Exercice::findOrFail($id);
         return view('admin/respiration/exrespiration', compact('exercices'));
     }
@@ -94,6 +94,4 @@ class ExerciceController extends Controller
     {
         //
     }
-
-
 }
