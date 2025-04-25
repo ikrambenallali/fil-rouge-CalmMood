@@ -72,13 +72,14 @@
 
                 </ul>
 
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <button type="submit" class="absolute bottom-0 w-[10%] bg-[#FBF4FA] text-[#C447AF] font-semibold py-2 px-4  rounded-lg">
-                        <ion-icon name="log-out-outline" class="mr-2"></ion-icon> Logout
-                    </button>
-                </form>
+                <div class="mt-auto pb-4">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="w-full bg-[#FBF4FA] text-[#C447AF] font-semibold py-2 px-4 rounded-lg flex items-center justify-center transition-all duration-200">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        </button>
+                    </form>
+                </div>
 
             </nav>
         </div>

@@ -16,8 +16,8 @@
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#C447AF] text-white mb-4">
                 <i class="fas fa-edit text-2xl"></i>
             </div>
-            <h1 class="text-3xl font-bold text-[#C447AF]">Modifier l'exercice</h1>
-            <p class="text-gray-600 mt-2">Mettez à jour les informations de l'exercice "{{ $exercice->title }}"</p>
+            <h1 class="text-3xl font-bold text-[#C447AF]">Edit Exercise</h1>
+            <p class="text-gray-600 mt-2">Update the exercise information "{{ $exercice->title }}"</p>
         </div>
 
         <!-- Form Card -->
@@ -35,19 +35,19 @@
                 <div class="space-y-6">
                     <div class="flex items-center gap-2 text-[#C447AF] font-medium border-b border-gray-200 pb-2">
                         <i class="fas fa-info-circle"></i>
-                        <h2 class="text-xl">Informations générales</h2>
+                        <h2 class="text-xl">General information</h2>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="col-span-2">
-                            <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Titre de l'exercice</label>
+                            <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Title of the exercise</label>
                             <input type="text" name="title" id="title" 
                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-[#C447AF] focus:border-transparent bg-white" 
                                 value="{{ $exercice->title }}" required>
                         </div>
 
                         <div class="col-span-2">
-                            <label for="category_id" class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
+                            <label for="category_id" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
                             <div class="relative">
                                 <select name="category_id" id="category_id" 
                                     class="w-full pl-4 pr-10 py-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-[#C447AF] focus:border-transparent bg-white appearance-none" 
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="col-span-2">
-                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description détaillée</label>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Detailed description</label>
                             <textarea name="description" id="description" rows="4" 
                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-[#C447AF] focus:border-transparent bg-white" 
                                 required>{{ $exercice->description }}</textarea>
@@ -77,11 +77,11 @@
                 <div class="space-y-6">
                     <div class="flex items-center gap-2 text-[#C447AF] font-medium border-b border-gray-200 pb-2">
                         <i class="fas fa-play-circle"></i>
-                        <h2 class="text-xl">Contenu multimédia</h2>
+                        <h2 class="text-xl">Multimedia content</h2>
                     </div>
                     
                     <div>
-                        <label for="video_url" class="block text-sm font-medium text-gray-700 mb-1">URL de la vidéo (YouTube)</label>
+                        <label for="video_url" class="block text-sm font-medium text-gray-700 mb-1">Video URL (YouTube)</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-gray-500">
                                 <i class="fab fa-youtube"></i>
@@ -96,7 +96,7 @@
                     <div class="bg-gray-50 p-4 rounded-xl">
                         <div class="flex items-center gap-2 text-gray-700 mb-2">
                             <i class="fas fa-link text-sm"></i>
-                            <span class="text-sm">Vidéo actuelle</span>
+                            <span class="text-sm">Current video</span>
                         </div>
                         <div class="text-sm text-gray-600 overflow-hidden text-ellipsis">
                             {{ $exercice->video_url }}
@@ -112,12 +112,12 @@
                 <div class="space-y-6">
                     <div class="flex items-center gap-2 text-[#C447AF] font-medium border-b border-gray-200 pb-2">
                         <i class="fas fa-lungs"></i>
-                        <h2 class="text-xl">Paramètres de respiration</h2>
+                        <h2 class="text-xl">Breathing parameters</h2>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
-                            <label for="inspireDuration" class="block text-sm font-medium text-gray-700 mb-1">Durée d'inspiration (sec)</label>
+                            <label for="inspireDuration" class="block text-sm font-medium text-gray-700 mb-1">Inspiration duration (sec)</label>
                             <div class="relative">
                                 <input type="number" name="inspireDuration" id="inspireDuration" min="0" 
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-[#C447AF] focus:border-transparent bg-white"
@@ -129,7 +129,7 @@
                         </div>
 
                         <div>
-                            <label for="retainDuration" class="block text-sm font-medium text-gray-700 mb-1">Durée de rétention (sec)</label>
+                            <label for="retainDuration" class="block text-sm font-medium text-gray-700 mb-1">Retention time (sec)</label>
                             <div class="relative">
                                 <input type="number" name="retainDuration" id="retainDuration" min="0" 
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-[#C447AF] focus:border-transparent bg-white"
@@ -141,7 +141,7 @@
                         </div>
 
                         <div>
-                            <label for="expireDuration" class="block text-sm font-medium text-gray-700 mb-1">Durée d'expiration (sec)</label>
+                            <label for="expireDuration" class="block text-sm font-medium text-gray-700 mb-1">Expiration time (sec)</label>
                             <div class="relative">
                                 <input type="number" name="expireDuration" id="expireDuration" min="0" 
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-[#C447AF] focus:border-transparent bg-white"
@@ -161,7 +161,7 @@
                     <a href="{{ route('exercices.index') }}" class="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-gray-200 transition-all text-center">
                         <div class="flex items-center justify-center gap-2">
                             <i class="fas fa-times"></i>
-                            <span>Annuler</span>
+                            <span>Cancel</span>
                         </div>
                     </a>
                     
@@ -170,8 +170,8 @@
                         
                         <button type="submit" class="px-6 py-3 bg-gradient-to-r from-[#C447AF] to-[#E192D4] text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all">
                             <div class="flex items-center gap-2">
-                                <i class="fas fa-save"></i>
-                                <span>Mettre à jour</span>
+                                <i class="fas fa-save"></i> 
+                                <span>Update</span>
                             </div>
                         </button>
                     </div>
