@@ -17,38 +17,43 @@
 <body class="min-h-screen bg-[#FBF4FA] flex flex-col items-center justify-center text-center p-6">
     <!-- positivity -->
     @if ($exercices->category->name == 'Positivity')
-    <div class="min-h-screen bg-[#FBF4FA] flex items-center justify-center p-6">
-        <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md border border-[#C447AF]">
-            <h2 class="text-2xl font-semibold text-[#C447AF] text-center mb-6">
-                3 Positive Things Today
-            </h2>
+    <form action="{{ route('positivity') }}" method="POST" >
 
-            <form action="#" method="POST" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-[#C447AF] mb-1">Positive Thought 1</label>
-                    <input type="text" name="positive1" class="w-full px-4 py-2 border border-[#C447AF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C447AF] bg-[#FBF4FA] placeholder-[#C447AF]" placeholder="Something good...">
-                </div>
+        @csrf
+        <div class="min-h-screen bg-[#FBF4FA] flex items-center justify-center p-6">
+            <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md border border-[#C447AF]">
+                <h2 class="text-2xl font-semibold text-[#C447AF] text-center mb-6">
+                    3 Positive Things Today
+                </h2>
 
-                <div>
-                    <label class="block text-sm font-medium text-[#C447AF] mb-1">Positive Thought 2</label>
-                    <input type="text" name="positive2" class="w-full px-4 py-2 border border-[#C447AF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C447AF] bg-[#FBF4FA] placeholder-[#C447AF]" placeholder="A happy moment...">
-                </div>
+                <input type="hidden" name="exercise_id" value="{{ $exercices->id }}">
 
-                <div>
-                    <label class="block text-sm font-medium text-[#C447AF] mb-1">Positive Thought 3</label>
-                    <input type="text" name="positive3" class="w-full px-4 py-2 border border-[#C447AF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C447AF] bg-[#FBF4FA] placeholder-[#C447AF]" placeholder="Something you’re grateful for...">
-                </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#C447AF] mb-1">Positive Thought 1</label>
+                        <input type="text" name="positive_thing_1" class="w-full px-4 py-2 border border-[#C447AF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C447AF] bg-[#FBF4FA] placeholder-[#C447AF]" placeholder="Something good...">
+                    </div>
 
-                <button type="submit" class="w-full py-3 rounded-xl bg-[#C447AF] text-white font-semibold hover:bg-pink-700 transition-all duration-300">
-                    Save My Positives
-                </button>
-            </form>
+                    <div>
+                        <label class="block text-sm font-medium text-[#C447AF] mb-1">Positive Thought 2</label>
+                        <input type="text" name="positive_thing_2" class="w-full px-4 py-2 border border-[#C447AF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C447AF] bg-[#FBF4FA] placeholder-[#C447AF]" placeholder="A happy moment...">
+                    </div>
 
-            <p class="mt-6 text-center text-sm text-[#C447AF]">
-                ✨ You'll receive sweet reminders to reflect on your happy moments ✨
-            </p>
+                    <div>
+                        <label class="block text-sm font-medium text-[#C447AF] mb-1">Positive Thought 3</label>
+                        <input type="text" name="positive_thing_3" class="w-full px-4 py-2 border border-[#C447AF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C447AF] bg-[#FBF4FA] placeholder-[#C447AF]" placeholder="Something you’re grateful for...">
+                    </div>
+
+                    <button type="submit" class="w-full py-3 rounded-xl bg-[#C447AF] text-white font-semibold mt-6">
+                        Save My Positives
+                    </button>
+                
+
+                <p class="mt-6 text-center text-sm text-[#C447AF]">
+                    ✨ You'll receive sweet reminders to reflect on your happy moments ✨
+                </p>
+            </div>
         </div>
-    </div>
+    </form>
 
     </div>
 
