@@ -59,6 +59,21 @@
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                             </div>
+
+                            <label for="category_id" class="block text-sm font-medium text-gray-700 mb-1">Type Stress</label>
+
+                            <div class="relative">
+                                <select name="typeStressId" id="typeStressId"
+                                    class="w-full pl-4 pr-10 py-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-[#C447AF] focus:border-transparent bg-white appearance-none"
+                                    required>
+                                    @foreach ($typesStress as $typeStress)
+                                    <option value="{{ $typeStress->id }}">{{ $typeStress->name }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-span-2">

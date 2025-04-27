@@ -30,13 +30,5 @@ class PositivityController extends Controller
 
         return redirect()->back();
     }
-    // Schema::create('positivity_exercises', function (Blueprint $table) {
-    //     $table->id();
-    //     $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
-    //     $table->foreignId('exercise_id')->constrained('exercices')->onDelete('cascade'); 
-    //     $table->string('positive_thing_1'); 
-    //     $table->string('positive_thing_2');
-    //     $table->string('positive_thing_3'); 
-    //     $table->timestamps();
-    // });
+  
 }

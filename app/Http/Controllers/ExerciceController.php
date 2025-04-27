@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Exercice;
+use App\Models\Type_stress;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,13 +20,13 @@ class ExerciceController extends Controller
         $user = User::findorFail(2);
         // return $user->stressResult->main_type;
         $categories = Category::all();
-        $exercices = Exercice::with('category')->get();
+        $exercices = Exercice::with('category','typeStress')->get();
         return view('admin/exercices', compact('exercices', 'categories', 'user'));
     }
     public function parCategorie($id)
     {
         $category = Category::findOrFail($id);
-        $exercices = $category->exercices; // Assure-toi que la relation est définie
+        $exercices = $category->exercices;
 
         return view('admin/allex', compact('category', 'exercices'));
     }
@@ -37,7 +38,8 @@ class ExerciceController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin/exForm', compact('categories'));
+        $typesStress=Type_stress::all();
+        return view('admin/exForm', compact('categories','typesStress'));
     }
 
     /**
@@ -49,12 +51,13 @@ class ExerciceController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
+            'typeStressId' => 'required|exists:type_Stress,id',
             'video_url' => 'nullable|url|max:255',
             'audio_url' => 'nullable|url|max:255',
             'respiration_data' => 'nullable|json',
 
         ]);
-
+// dd('typeStressId');
         Exercice::create($validated);
 
         return redirect()->route('exercices.create')->with('success', 'Exercice ajouté avec succès.');
@@ -91,6 +94,7 @@ class ExerciceController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
+            'typeStressId' => 'required|exists:type_Stress,id',
             'video_url' => 'nullable|url|max:255',
             'audio_url' => 'nullable|url|max:255',
             'respiration_data' => 'nullable|json',

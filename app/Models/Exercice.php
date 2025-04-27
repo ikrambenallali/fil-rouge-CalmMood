@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exercice extends Model
 {
-    
+
     protected $fillable = [
         'title',
         'description',
@@ -14,6 +14,7 @@ class Exercice extends Model
         'video_url',
         'respiration_data',
         'audio_url',
+        'typeStressId',
     ];
 
     public function category()
@@ -25,5 +26,8 @@ class Exercice extends Model
         preg_match('/(youtu\.be\/|watch\?v=|embed\/)([^\?&"\'<>]+)/', $url, $matches);
         return $matches[2] ?? null;
     }
-    
+    public function typeStress()
+    {
+        return $this->belongsTo(Type_stress::class, 'typeStressID', 'id');
+    }
 }
