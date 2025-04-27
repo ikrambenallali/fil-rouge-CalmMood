@@ -11,27 +11,33 @@ class TypeStressController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // tha n admin 
     public function index()
     {
         // $user = auth()->user();
         $types = Type_stress::all();
         return view('typeStress', compact('types'));
     }
+    // tha ithas ditmandan i user tamazwat 
+    public function typeStress()
+    {
+        $types = Type_stress::all();
+        return view('utilisateurs/type', compact('types'));
+    }
+
     // public function test(string $id){
     //     $user = auth()->user();
 
     //     $type = User::findOrFail($user->id)->stressResult->main_type;
     //     return view('utilisateurs/dashboardUser', compact('type'));
     // }
-    public function test()
-    {
-        $user = auth()->user();
-    
-        $stressResult = $user->stressResult;  
-        $type = $stressResult->type; 
-    
-        return view('utilisateurs.dashboardUser', compact('type'));
-    }
+    // public function test()
+    // {
+    //     $user = auth()->user();
+    //     $stressResult = $user->stressResult;  
+    //     $type = $stressResult->type; 
+    //     return view('utilisateurs.dashboardUser', compact('type'));
+    // }
     
     /**
      * Show the form for creating a new resource.

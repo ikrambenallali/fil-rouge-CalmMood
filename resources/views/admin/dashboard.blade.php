@@ -28,13 +28,13 @@
                 <ul>
                     <li class="mb-4">
 
-                        <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+                        <a href="{{ route('allUsers') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
                             <ion-icon name="home-outline" class="text-xl"></ion-icon>
                             <i class="fas fa-users mr-3"></i> Dashboard
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+                        <a href="{{ route('allUsers') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
                             <ion-icon name="people-outline"></ion-icon>
                             <i class="fas fa-users mr-3"></i> user management
                         </a>
@@ -48,8 +48,8 @@
                     </li>
                     <li class="mb-4">
                         <a href="{{ route('categoryEx') }}" class="flex items-center  hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
-                            <ion-icon name="reader-outline"></ion-icon>
-                            <i class="fas fa-meditation mr-3"></i> Exercises
+                        <ion-icon name="list-outline" class="text-xl"></ion-icon>
+                        <i class="fas fa-meditation mr-3"></i> Exercises
                         </a>
                     </li>
                     <li>

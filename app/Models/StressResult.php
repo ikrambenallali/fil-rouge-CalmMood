@@ -21,7 +21,6 @@ class StressResult extends Model
 
     public function typeStress()
     {
-        // Recherche le type de stress en fonction du champ `main_type`
         return $this->hasOne(Type_stress::class, 'name', 'main_type');
     }
     

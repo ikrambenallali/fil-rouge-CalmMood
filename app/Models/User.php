@@ -55,5 +55,9 @@ class User extends Authenticatable
 {
     return $this->hasOne(StressResult::class);
 }
+public function completedExercises()
+{
+    return $this->hasMany(UserExerciseProgress::class);
+}
 
 }

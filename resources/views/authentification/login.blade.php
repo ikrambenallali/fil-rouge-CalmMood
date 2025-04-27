@@ -15,7 +15,6 @@
 </head>
 
 <body class="bg-[#FBF4FA]">
-    {{ auth()->user() }}
     <div class="flex flex-col items-center m-20">
         <h1 class="flex justify-center text-3xl  font-bold	text-[#C447AF] m-12 ">Login</h1>
 

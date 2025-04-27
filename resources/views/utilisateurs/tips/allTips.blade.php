@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+                        <a href="{{ route('type') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
                             <ion-icon name="help-circle-outline" class="text-xl"></ion-icon>
                             <span class="ml-3">Types of Stress</span>
                         </a>

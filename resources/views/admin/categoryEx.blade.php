@@ -15,13 +15,13 @@
             <nav class="flex flex-col justify-between h-[calc(100%-8rem)]">
             <ul>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+                        <a href="{{ route('allUsers') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
                             <ion-icon name="home-outline" class="text-xl"></ion-icon>
                             <span class="ml-2">Dashboard</span>
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+                        <a href="{{ route('allUsers') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
                             <ion-icon name="people-outline"></ion-icon>
                             <span class="ml-2">User management</span>
                         </a>
@@ -46,8 +46,8 @@
                     </li>
                     <li class="mb-4">
                         <a href="{{ route('categories.index') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
-                            <ion-icon name="bulb-outline"></ion-icon>
-                            <span class="ml-2">Categories</span>
+                        <ion-icon name="list-outline" class="text-xl"></ion-icon>
+                        <span class="ml-2">Categories</span>
                         </a>
                     </li>
                     <li class="mb-4">
