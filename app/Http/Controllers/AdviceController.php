@@ -17,6 +17,12 @@ class AdviceController extends Controller
         $advices = Advice::all();
         return view('admin.advice', compact('advices'));
     }
+    public function afficher()
+    {
+        $user = auth()->user();
+        $advices = Advice::all();
+        return view('utilisateurs/tips/allTips', compact('advices'));
+    }
 
 
     /**
@@ -55,7 +61,8 @@ class AdviceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $advice = Advice::findOrFail($id);
+        return view('utilisateurs/tips/tipDetails', compact('advice'));
     }
 
     /**
