@@ -30,4 +30,5 @@ class Exercice extends Model
     {
         return $this->belongsTo(Type_stress::class, 'typeStressID', 'id');
     }
+   
 }

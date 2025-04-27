@@ -68,6 +68,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::post('/stressResult', [StressTestController::class, 'store'])->name('stressResult');
     Route::get('/stress-results/{id}', [StressTestController::class, 'show'])->name('stressResult.show');
+    Route::get('/categoryExUser', [CategoryController::class, 'showcatExUser'])->name('categoryExUser');
+    Route::get('/parCategorieUser/{id}', [ExerciceController::class, 'parCategorieUser'])->name('parCategorieUser');
 
     // wanita thayi it2afichan page thamazwat n dashboard user 
     // Route::get('/dashboardUser/{id}', [TypeStressController::class, 'test'])->name('typeStressUser');
