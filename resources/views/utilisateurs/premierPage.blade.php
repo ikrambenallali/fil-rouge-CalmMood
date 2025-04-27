@@ -63,25 +63,17 @@
     <div class="-ml-6">
         <img class="w-[15%] -my-12" src="{{ asset('storage/images/logo.png') }}" alt="logo">
     </div>
-    <h2 class="text-3xl font-semibold mb-8 mt-12 text-[#C447AF] ">Hi {{ auth()->user()->name }}</h2>
+    <h2 class="text-3xl font-semibold mb-8 mt-12 text-[#C447AF] ">Hi Ikram</h2>
 
   <!-- Main Content -->
   <div class="flex-1 p-8 flex justify-center items-center">
     <div class="bg-white rounded-2xl shadow-lg p-8 max-w-xl w-full">
       <h1 class="text-3xl font-bold text-center text-[#C447AF] mb-6">Your Stress Type</h1>
 
-      @if ($type)
-    <div class="bg-[#E192D4] text-white rounded-xl p-6 text-center mb-6">
+      <div class="bg-[#E192D4] text-white rounded-xl p-6 text-center mb-6">
         <h2 class="text-2xl font-semibold mb-2">{{ $type->name }}</h2>
-        <p class="text-base">{{ $type->content }}</p>
-    </div>
-@else
-    <div class="bg-red-500 text-white rounded-xl p-6 text-center mb-6">
-        <p>Il n'y a pas de type de stress associé à cet utilisateur.</p>
-    </div>
-@endif
-
-
+        <p class="text-base">{{ $type->description }}</p>
+      </div>
 
       <div class="mb-6">
         <h3 class="text-xl font-bold text-[#C447AF] mb-4">Our Recommendations:</h3>
