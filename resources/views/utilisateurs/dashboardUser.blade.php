@@ -15,13 +15,13 @@
     <nav class="flex-1">
       <ul>
         <li class="mb-4">
-          <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+          <a href="{{ route('dashboardUser') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
             <ion-icon name="home-outline" class="text-xl"></ion-icon>
             <span class="ml-3">Dashboard</span>
           </a>
         </li>
         <li class="mb-4">
-          <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+          <a href="{{ route('categoryExUser') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
             <ion-icon name="reader-outline" class="text-xl"></ion-icon>
             <span class="ml-3">Exercises</span>
           </a>
@@ -49,7 +49,7 @@
 
     <!-- Logout Button -->
     <div>
-      <form method="POST" action="">
+      <form method="POST" action="{{ route('logout') }}">
         @csrf
         <button type="submit" class="w-full bg-[#FBF4FA] text-[#C447AF] font-semibold py-2 px-4 rounded-lg flex items-center justify-center transition-all duration-200">
           <ion-icon name="log-out-outline" class="mr-2 text-xl"></ion-icon> Logout
@@ -66,7 +66,7 @@
     <h2 class="text-3xl font-semibold mb-8 mt-12 text-[#C447AF] ">Hi {{ auth()->user()->name }}</h2>
 
   <!-- Main Content -->
-  <div class="flex-1 p-8 flex justify-center items-center">
+  <div class="flex-1 p-4  flex justify-center items-center">
     <div class="bg-white rounded-2xl shadow-lg p-8 max-w-xl w-full">
       <h1 class="text-3xl font-bold text-center text-[#C447AF] mb-6">Your Stress Type</h1>
 
