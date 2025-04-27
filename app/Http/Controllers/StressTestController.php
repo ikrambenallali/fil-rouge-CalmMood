@@ -19,7 +19,7 @@ class StressTestController extends Controller
     
         // Ajouter l'ID de l'utilisateur connecté
         // $validated['user_id'] = auth()->id();
-        $validated['user_id'] = 2;
+        $validated['user_id'] = auth()->id();
     
         $result = StressResult::create($validated);
     

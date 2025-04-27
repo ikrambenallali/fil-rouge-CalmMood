@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Type_stress;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TypeStressController extends Controller
@@ -16,7 +17,22 @@ class TypeStressController extends Controller
         $types = Type_stress::all();
         return view('typeStress', compact('types'));
     }
+    // public function test(string $id){
+    //     $user = auth()->user();
 
+    //     $type = User::findOrFail($user->id)->stressResult->main_type;
+    //     return view('utilisateurs/dashboardUser', compact('type'));
+    // }
+    public function test()
+    {
+        $user = auth()->user();
+    
+        $stressResult = $user->stressResult;  
+        $type = $stressResult->type; 
+    
+        return view('utilisateurs.dashboardUser', compact('type'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -47,10 +63,11 @@ class TypeStressController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     $type = Type_stress::findOrFail($id);
+    //     return view('utilisateurs/dashboardUser', compact('type'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

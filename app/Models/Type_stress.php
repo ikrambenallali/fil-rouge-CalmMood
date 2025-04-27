@@ -11,5 +11,5 @@ class Type_stress extends Model
 
     protected $fillable = ['name', 'content'];
     protected $table = 'type_stress';
-
+  
 }

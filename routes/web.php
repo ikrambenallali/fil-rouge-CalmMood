@@ -9,6 +9,7 @@ use App\Http\Controllers\PositivityController;
 use App\Http\Controllers\StressTestController;
 use App\Http\Controllers\TypeStressController;
 use App\Http\Controllers\UserController;
+use App\Models\StressResult;
 use Illuminate\Support\Facades\Route;
 
 
@@ -44,10 +45,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('advice.update');
     Route::delete('/advice/{id}', [AdviceController::class, 'destroy'])->name('advice.destroy');
 
-// wanita omba3d ikhasa atharar ra user rakho 9a testir waha sf ni 
-Route::post('/positivity', [PositivityController::class, 'store'])->name('positivity');
+    // wanita omba3d ikhasa atharar ra user rakho 9a testir waha sf ni 
+    Route::post('/positivity', [PositivityController::class, 'store'])->name('positivity');
 
-// orath wa athaksar testir waha daga 
+    // orath wa athaksar testir waha daga 
 
 
     Route::resource('categories', CategoryController::class);
@@ -61,20 +62,36 @@ Route::post('/positivity', [PositivityController::class, 'store'])->name('positi
     Route::get('/respiration478', function () {
         return view('admin.respiration.Respiration478');
     })->name('respiration478');
-    Route::get('/categoryEx', [CategoryController::class,'showcatEx'])->name('categoryEx');
+    Route::get('/categoryEx', [CategoryController::class, 'showcatEx'])->name('categoryEx');
     Route::get('/admin/exercices/categorie/{id}', [ExerciceController::class, 'parCategorie'])->name('exercices.parCategorie');
-
 });
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::post('/stressResult', [StressTestController::class, 'store'])->name('stressResult');
     Route::get('/stress-results/{id}', [StressTestController::class, 'show'])->name('stressResult.show');
 
+    // wanita thayi it2afichan page thamazwat n dashboard user 
+    // Route::get('/dashboardUser/{id}', [TypeStressController::class, 'test'])->name('typeStressUser');
+    Route::get('/dashboardUser', [TypeStressController::class, 'test'])->name('dashboardUser');
+
+
     Route::get('/stressResult', function () {
         return view('utilisateurs.test');
     })->name('stress.test'); // anciennement 'stressResult'
     Route::get('/dashboardUser', function () {
-        return view('utilisateurs.dashboardUser');
+        // Récupérer le premier résultat du test de stress de l'utilisateur connecté
+        $stressResult = StressResult::where('user_id', auth()->id())->first();
+    
+        if ($stressResult && $stressResult->typeStress) {
+            // Accéder au type de stress à travers la relation
+            $type = $stressResult->typeStress; 
+        } else {
+            $type = null; // Aucun résultat trouvé ou pas de type de stress associé
+        }
+    
+        return view('utilisateurs.dashboardUser', compact('type'));
     })->name('dashboardUser');
+    
+
 
     Route::get('/typeStress', function () {
         return view('utilisateurs.typeStress');
