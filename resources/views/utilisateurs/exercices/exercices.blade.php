@@ -76,7 +76,7 @@
                         </a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+                        <a href="{{ route('allAdvice') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
                             <ion-icon name="bulb-outline" class="text-xl"></ion-icon>
                             <span class="ml-3">Anti-Stress Tips</span>
                         </a>
@@ -126,7 +126,7 @@
             <div class="max-w-4xl mx-auto">
                 <div class="mt-6">
                     @forelse ($exercices as $exercice)
-                    <a href="{{ route('exercices.show', $exercice->id) }}" class="block w-auto">
+                    <a href="{{ route('showExDetails', $exercice->id) }}" class="block w-auto">
                         <div class="mb-8 bg-white shadow-md rounded-2xl p-5 hover:shadow-lg transition-all duration-300 card relative transform hover:-translate-y-1">
                             <div class="pl-3">
                                 <h3 class="text-xl font-semibold text-[#C447AF] mb-2">{{ $exercice->title }}</h3>

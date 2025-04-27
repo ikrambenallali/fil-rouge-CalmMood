@@ -86,6 +86,12 @@ class ExerciceController extends Controller
         $exercices = Exercice::findOrFail($id);
         return view('admin/respiration/exrespiration', compact('exercices'));
     }
+    public function showExForUser(string $id)
+    {
+        $exercices = Exercice::findOrFail($id);
+        return view('utilisateurs/exercices/exerciceDetails', compact('exercices'));
+    }
+
 
 
     /**
