@@ -70,6 +70,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/stress-results/{id}', [StressTestController::class, 'show'])->name('stressResult.show');
     Route::get('/categoryExUser', [CategoryController::class, 'showcatExUser'])->name('categoryExUser');
     Route::get('/parCategorieUser/{id}', [ExerciceController::class, 'parCategorieUser'])->name('parCategorieUser');
+    Route::get('/showExDetails/{id}', [ExerciceController::class, 'showExForUser'])->name('showExDetails');
+
 
     // wanita thayi it2afichan page thamazwat n dashboard user 
     // Route::get('/dashboardUser/{id}', [TypeStressController::class, 'test'])->name('typeStressUser');
