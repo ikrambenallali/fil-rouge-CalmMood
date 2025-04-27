@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExerciceController;
 use App\Http\Controllers\PositivityController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StressTestController;
 use App\Http\Controllers\TypeStressController;
 use App\Http\Controllers\UserController;
@@ -71,6 +72,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // advices
     Route::get('/allAdvice', [AdviceController::class, 'afficher'])->name('allAdvice');
     Route::get('/tipDetails/{id}', [AdviceController::class, 'show'])->name('tipDetails');
+    // profil 
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
 
     // type de stress iyatmandan tamazwat wani login 
     Route::get('/type', [TypeStressController::class, 'typeStress'])->name('type');

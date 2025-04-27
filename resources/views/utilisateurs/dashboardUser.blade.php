@@ -39,7 +39,7 @@
           </a>
         </li>
         <li class="mb-4">
-          <a href="#" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
+          <a href="{{ route('profile') }}" class="flex items-center hover:bg-[#FBF4FA] hover:text-[#C447AF] p-2 rounded-xl">
             <ion-icon name="person-outline" class="text-xl"></ion-icon>
             <span class="ml-3">Profile</span>
           </a>
