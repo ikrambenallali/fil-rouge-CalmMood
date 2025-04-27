@@ -38,7 +38,7 @@ class AuthController extends Controller
         if ($role == 'admin') {
             return redirect(route('dashboard'));
         } else {
-            return redirect(route('typeStress'));
+            return redirect(route('type'));
         }
     }
     public function showLoginForm()
@@ -72,7 +72,7 @@ class AuthController extends Controller
         if ($role == 'admin') {
             return redirect(route('allUsers'));
         } else {
-            return redirect(route('typeStress'));
+            return redirect(route('type'));
         }
     }
     public function logout(Request $request)
