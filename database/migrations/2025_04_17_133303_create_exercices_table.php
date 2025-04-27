@@ -21,6 +21,7 @@ return new class extends Migration
             $table->json('respiration_data')->nullable();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('typeStressId')->references('id')->on('type_stress')->onDelete('cascade');
         });
     }
 

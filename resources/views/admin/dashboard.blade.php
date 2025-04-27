@@ -205,30 +205,7 @@
                 </div>
             </div>
 
-            <!-- Exercices de Relaxation -->
-            <div class="bg-white shadow-lg rounded-lg p-6 mt-8">
-                <h3 class="text-xl font-bold mb-4 text-gray-700">Exercices de Relaxation</h3>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="bg-gray-100 p-4 rounded-lg">
-                        <h4 class="font-semibold mb-2">Méditation Guidée</h4>
-                        <p class="text-sm text-gray-600">Durée: 15 min</p>
-                        <button
-                            class="mt-2 bg-[#C447AF] text-white px-3 py-1 rounded ">Modifier</button>
-                    </div>
-                    <div class="bg-gray-100 p-4 rounded-lg">
-                        <h4 class="font-semibold mb-2">Respiration Profonde</h4>
-                        <p class="text-sm text-gray-600">Durée: 10 min</p>
-                        <button
-                            class="mt-2 bg-[#C447AF] text-white px-3 py-1 rounded ">Modifier</button>
-                    </div>
-                    <div class="bg-gray-100 p-4 rounded-lg">
-                        <h4 class="font-semibold mb-2">Yoga de Relaxation</h4>
-                        <p class="text-sm text-gray-600">Durée: 20 min</p>
-                        <button
-                            class="mt-2  bg-[#C447AF] text-white px-3 py-1 rounded ">Modifier</button>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 </body>

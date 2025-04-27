@@ -133,12 +133,17 @@
             </div>
 
             <!-- Button "Add Exercise" bien placé sous le titre -->
+            <!-- Button "Add Exercise" bien placé sous le titre -->
+            @auth
+            @if (auth()->user()->role == 'admin')
             <div class="mb-8 text-center">
                 <a href="{{ route('exercices.create') }}" class="bg-[#C447AF] text-white px-6 py-3 rounded-xl hover:bg-[#a93792] shadow-xl hover:scale-105 w-auto inline-flex justify-center items-center gap-2">
                     <i class="fas fa-plus"></i>
                     <span>Add exercise</span>
                 </a>
             </div>
+            @endif
+            @endauth
 
             <!-- Container principal -->
             <div class="max-w-4xl mx-auto">
@@ -149,7 +154,7 @@
                             <div class="pl-3">
                                 <h3 class="text-xl font-semibold text-[#C447AF] mb-2">{{ $exercice->title }}</h3>
                                 <p class="text-gray-600 mb-3">{{ $exercice->description }}</p>
-
+                                <p class="font-bold">Type of stress : {{ $exercice->typeStress->name }}</p>
                                 @auth
                                 @if (auth()->user()->role == 'admin')
                                 <div class="flex gap-3 mt-4 pt-3 border-t border-[#F8E6F5]">
