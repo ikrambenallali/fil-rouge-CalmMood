@@ -40,7 +40,7 @@ class AdviceController extends Controller
             'content' => 'required|string|max:255',
             'image' => ['required'],
         ]);
-
+// dd($request->all());
 
         $imagepath = $request->file('image') ? $request->file('image')->store('advices', 'public') : null;
 
@@ -51,7 +51,7 @@ class AdviceController extends Controller
 
         ]);
 
-
+// dd($advice);
 
         return redirect()->back();
     }
