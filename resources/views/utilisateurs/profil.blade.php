@@ -117,8 +117,8 @@
           </div>
           
           <div class="bg-[#FBF4FA] rounded-xl p-4 text-center">
-            <h3 class="text-[#C447AF] font-medium mb-1">Stress Level</h3>
-            <p class="text-2xl font-bold">Medium</p>
+            <h3 class="text-[#C447AF] font-medium mb-1">Stress Type</h3>
+            <p class="text-2xl font-bold">{{ ucfirst($user->stressResult->main_type) }}</p>
           </div>
         </div>
         

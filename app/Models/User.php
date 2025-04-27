@@ -60,4 +60,5 @@ public function completedExercises()
     return $this->hasMany(UserExerciseProgress::class);
 }
 
+
 }
