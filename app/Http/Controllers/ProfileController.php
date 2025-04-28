@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Exercice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -17,21 +20,34 @@ class ProfileController extends Controller
         ]);
     }
     public function progress()
-{
-    $user = auth()->user();
+    {
+        $user = auth()->user();
 
-    $completedExercisesCount = $user->exerciseProgress()
-        ->whereNotNull('exercice_id')
-        ->where('is_completed', true)
-        ->count();
+        $completedExercisesCount = $user->exerciseProgress()
+            ->whereNotNull('exercice_id')
+            ->where('is_completed', true)
+            ->count();
+        // dd($completedExercisesCount);
+        $completedAdvicesCount = $user->exerciseProgress()
+            ->whereNotNull('advice_id')
+            ->where('is_completed', true)
+            ->count();
+        // ###########################
+        // $id = $user->stressResult->typeStress->id;
+        // $category = Category::findOrFail($id);
+        $mainType = Auth::user()->stressResult->main_type;
+        $exercices = Exercice::whereHas('typeStress', function ($query) use ($mainType) {
+            $query->where('name', $mainType);
+        })->get();
+        // dd($exercices);
+        // ###########################
 
-    $completedAdvicesCount = $user->exerciseProgress()
-        ->whereNotNull('advice_id')
-        ->where('is_completed', true)
-        ->count();
-
-    return view('utilisateurs/profil', compact('user', 'completedExercisesCount', 'completedAdvicesCount'));
-}
+        $nombreExercicesDansMonTypeDeStress = $exercices->count();
+        // dd($nombreExercicesDansMonTypeDeStress);
+        $progress = ($completedExercisesCount / $nombreExercicesDansMonTypeDeStress) * 100;
+        // dd($progress);
+        return view('utilisateurs/profil', compact('user', 'completedExercisesCount', 'completedAdvicesCount','nombreExercicesDansMonTypeDeStress', 'progress'));
+    }
 
     public function update(Request $request)
     {
@@ -65,7 +81,6 @@ class ProfileController extends Controller
             ->where('is_completed', true)
             ->get();
 
-        return view('utilisateurs/exCompleted', compact('user', 'exercices'));
+        return view('utilisateurs/profil', compact('user', 'exercices'));
     }
-
 }

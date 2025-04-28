@@ -89,7 +89,7 @@
     <div class="bg-white rounded-xl p-6 mb-8 shadow-md">
       <h3 class="text-xl font-semibold text-[#C447AF] mb-3">Your Progress</h3>
       <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
-        <div class="bg-[#E192D4] h-4 rounded-full" style="width: 65%"></div>
+        <div class="bg-[#E192D4] h-4 rounded-full" style="width: 65%"></div> 
       </div>
       <div class="flex justify-between text-sm text-gray-600">
         <span>12/20 exercises completed</span>
@@ -137,8 +137,8 @@
               <label for="toggle-{{ $exercice->id }}" class="text-sm text-gray-600">Completed</label>
             </div>
             
-            <a href="{{ route('exercice.show', $exercice->id) }}" class="text-[#C447AF] hover:text-[#DD6ECA] font-medium flex items-center">
-              <span>Start</span>
+            <a href="{{ route('showExDetails', $exercice->id) }}" class="block w-auto">
+            <span>Start</span>
               <ion-icon name="arrow-forward-outline" class="ml-1"></ion-icon>
             </a>
           </div>
