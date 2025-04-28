@@ -102,6 +102,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     // exercice progress
     Route::post('/complete', [UserExerciseProgressController::class, 'complete'])->name('exercises.complete');
+    // advice progress
+    Route::post('/completeLectureConseils', [UserExerciseProgressController::class, 'completeLectureConseils'])->name('advices.complete');
 
 
 });

@@ -28,5 +28,23 @@ class UserExerciseProgressController extends Controller
     
         return redirect()->back()->with('success', 'Exercices complétés enregistrés avec succès !');
     }
+    public function completeLectureConseils(Request $request)
+    {
+        $adviceIds = $request->input('advices', []);
+    
+        foreach ($adviceIds as $adviceId) {
+            UserExerciseProgress::updateOrCreate(
+                [
+                    'user_id' => Auth::id(),
+                    'advice_id' => $adviceId,
+                ],
+                [
+                    'is_completed' => true,
+                ]
+            );
+        }
+    
+        return redirect()->back()->with('success', 'advices complétés enregistrés avec succès !');
+    }
     
 }
