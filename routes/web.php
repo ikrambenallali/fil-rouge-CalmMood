@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StressTestController;
 use App\Http\Controllers\TypeStressController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserExerciseProgressController;
 use App\Models\StressResult;
 use Illuminate\Support\Facades\Route;
 
@@ -98,6 +99,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     // tha positivity
     Route::post('/positivity', [PositivityController::class, 'store'])->name('positivity');
+
+    // exercice progress
+    Route::post('/complete', [UserExerciseProgressController::class, 'complete'])->name('exercises.complete');
 
 
 });
