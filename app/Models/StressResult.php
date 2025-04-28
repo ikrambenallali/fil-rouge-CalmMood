@@ -14,8 +14,9 @@ class StressResult extends Model
         'physical',
         'main_type'
     ];
-    
-    public function user() {
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -23,7 +24,6 @@ class StressResult extends Model
     {
         return $this->hasOne(Type_stress::class, 'name', 'main_type');
     }
-    
-    
+   
 
 }

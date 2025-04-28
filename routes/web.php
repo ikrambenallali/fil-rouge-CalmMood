@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StressTestController;
 use App\Http\Controllers\TypeStressController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserExerciseProgressController;
 use App\Models\StressResult;
 use Illuminate\Support\Facades\Route;
 
@@ -48,7 +49,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('advice.update');
     Route::delete('/advice/{id}', [AdviceController::class, 'destroy'])->name('advice.destroy');
 // wanita omba3d ikhasa atharar ra user rakho 9a testir waha sf ni 
-    Route::post('/positivity', [PositivityController::class, 'store'])->name('positivity');
+    // Route::post('/positivity', [PositivityController::class, 'store'])->name('positivity');
 // categories
     Route::resource('categories', CategoryController::class);
     Route::get('/categoryEx', [CategoryController::class, 'showcatEx'])->name('categoryEx');
@@ -95,6 +96,13 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         }
         return view('utilisateurs.dashboardUser', compact('type'));
     })->name('dashboardUser');
+
+    // tha positivity
+    Route::post('/positivity', [PositivityController::class, 'store'])->name('positivity');
+
+    // exercice progress
+    Route::post('/complete', [UserExerciseProgressController::class, 'complete'])->name('exercises.complete');
+
 
 });
 

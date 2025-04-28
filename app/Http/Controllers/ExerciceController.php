@@ -18,7 +18,7 @@ class ExerciceController extends Controller
     public function index()
     {
         // dd(Auth::user());
-        $user = User::findorFail(2);
+        $user = User::findorFail($id);
         // return $user->stressResult->main_type;
         $categories = Category::all();
         $exercices = Exercice::with('category', 'typeStress')->get();

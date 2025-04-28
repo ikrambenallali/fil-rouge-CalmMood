@@ -10,8 +10,10 @@ class ProfileController extends Controller
 {
     public function show()
     {
+        $user = auth()->user()->load('stressResult.typeStress');
+
         return view('utilisateurs/profil', [
-            'user' => auth()->user()
+            'user' => $user,
         ]);
     }
     public function update(Request $request)
