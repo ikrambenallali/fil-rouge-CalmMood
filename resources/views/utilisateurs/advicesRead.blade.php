@@ -73,21 +73,16 @@
 
         <!-- Exercises Grid -->
         <div class="mt-16 flex flex-col gap-4">
-            @forelse ($exercices as $exercice)
+            @forelse ($advices as $advice)
 
             <div class="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                 <!-- Exercise Image or Icon -->
                 <div class="p-6 ">
-                    <h3 class="text-xl font-semibold text-[#C447AF]">{{ $exercice->exercice->title }}</h3>
+                    <h3 class="text-xl font-semibold text-[#C447AF]">{{ $advice->advice->title }}</h3>
 
-                    <p class="text-gray-600">{{ $exercice->exercice->description }}</p>
+                    <p class="text-gray-600">{{ $advice->advice->content }}</p>
                     <!-- Custom Checkbox -->
-                    <div class="flex items-center justify-between">
-                        <a href="{{ route('showExDetails', $exercice->exercice_id) }}" class="block w-auto">
-                            <span>Start</span>
-                            <ion-icon name="arrow-forward-outline" class="ml-1"></ion-icon>
-                        </a>
-                    </div>
+                   
                 </div>
             </div>
             @empty
@@ -98,7 +93,10 @@
             </div>
             @endforelse
         </div>
-
+                        <a href="{{ route('allAdvice') }}" class="bg-[#C447AF] text-white  rounded  block w-[10%] text-center py-2 mt-4 hover:bg-[#E192D4] transition duration-300">
+                            <ion-icon name="arrow-forward-outline" class=""></ion-icon>
+                           Show All Tips
+                        </a>
 
     </div>
 

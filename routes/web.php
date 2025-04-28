@@ -9,6 +9,7 @@ use App\Http\Controllers\PositivityController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StressTestController;
 use App\Http\Controllers\TypeStressController;
+use App\Http\Controllers\UserAdviceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserExerciseProgressController;
 use App\Models\StressResult;
@@ -79,6 +80,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // Route::get('/profile/progress', [ProfileController::class, 'progress'])->name('profile.progress');
     Route::get('/profile', [ProfileController::class, 'progress'])->name('profile');
     Route::get('/ExerciceProgress', [ProfileController::class, 'ExerciceProgress'])->name('ExerciceProgress');
+    Route::get('/AdviceProgress', [ProfileController::class, 'AdviceProgress'])->name('AdviceProgress');
 
     // type de stress iyatmandan tamazwat wani login 
     Route::get('/type', [TypeStressController::class, 'typeStress'])->name('type');
@@ -105,7 +107,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // exercice progress
     Route::post('/complete', [UserExerciseProgressController::class, 'complete'])->name('exercises.complete');
     // advice progress
-    Route::post('/completeLectureConseils', [UserExerciseProgressController::class, 'completeLectureConseils'])->name('advices.complete');
+    Route::post('/completeLectureConseils', [UserAdviceController::class, 'completeLectureConseils'])->name('advices.complete');
 
 
 });

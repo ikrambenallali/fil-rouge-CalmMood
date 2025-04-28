@@ -218,7 +218,7 @@
                 <ion-icon name="bulb-outline" class="text-2xl text-white"></ion-icon>
               </div>
             </div>
-            <a href="#" class="mt-4 block text-[#C447AF] hover:text-[#DD6ECA] font-medium">
+            <a href="{{ route('AdviceProgress') }}" class="mt-4 block text-[#C447AF] hover:text-[#DD6ECA] font-medium">
               View details <ion-icon name="arrow-forward-outline" class="inline-block ml-1"></ion-icon>
             </a>
           </div>

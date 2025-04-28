@@ -52,17 +52,19 @@ class User extends Authenticatable
         ];
     }
     public function stressResult()
-{
-    return $this->hasOne(StressResult::class);
-}
-public function completedExercises()
-{
-    return $this->hasMany(UserExerciseProgress::class);
-}
-public function exerciseProgress()
-{
-    return $this->hasMany(UserExerciseProgress::class);
-}
-
-
+    {
+        return $this->hasOne(StressResult::class);
+    }
+    public function completedExercises()
+    {
+        return $this->hasMany(UserExerciseProgress::class);
+    }
+    public function read()
+    {
+        return $this->hasMany(UserAdvice::class);
+    }
+    public function exerciseProgress()
+    {
+        return $this->hasMany(UserExerciseProgress::class);
+    }
 }

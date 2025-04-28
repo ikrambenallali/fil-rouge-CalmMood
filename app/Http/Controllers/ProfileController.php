@@ -28,7 +28,7 @@ class ProfileController extends Controller
             ->where('is_completed', true)
             ->count();
         // dd($completedExercisesCount);
-        $completedAdvicesCount = $user->exerciseProgress()
+        $completedAdvicesCount = $user->read()
             ->whereNotNull('advice_id')
             ->where('is_completed', true)
             ->count();
@@ -79,8 +79,17 @@ class ProfileController extends Controller
         $exercices = $user->exerciseProgress()
             ->whereNotNull('exercice_id')
             ->where('is_completed', true)
+            // ->with('exercice')
             ->get();
-
-        return view('utilisateurs/profil', compact('user', 'exercices'));
+// dd($exercices);
+        return view('utilisateurs/exCompleted', compact('user', 'exercices'));
+    }
+    public function AdviceProgress()
+    {
+        $user = auth()->user();
+        $advices = $user->read()
+            ->where('is_completed', true)
+            ->get();
+        return view('utilisateurs/advicesRead', compact('user','advices'));
     }
 }
