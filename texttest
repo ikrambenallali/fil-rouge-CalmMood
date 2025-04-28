@@ -1,0 +1,1 @@
+php artisan migrate --path=/database/migrations/2025_04_28_145558_create_user_advices_table.php

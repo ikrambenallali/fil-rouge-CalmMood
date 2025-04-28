@@ -28,5 +28,6 @@ class UserExerciseProgressController extends Controller
     
         return redirect()->back()->with('success', 'Exercices complétés enregistrés avec succès !');
     }
+ 
     
 }

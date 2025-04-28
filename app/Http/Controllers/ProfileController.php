@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Exercice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -16,6 +19,36 @@ class ProfileController extends Controller
             'user' => $user,
         ]);
     }
+    public function progress()
+    {
+        $user = auth()->user();
+
+        $completedExercisesCount = $user->exerciseProgress()
+            ->whereNotNull('exercice_id')
+            ->where('is_completed', true)
+            ->count();
+        // dd($completedExercisesCount);
+        $completedAdvicesCount = $user->read()
+            ->whereNotNull('advice_id')
+            ->where('is_completed', true)
+            ->count();
+        // ###########################
+        // $id = $user->stressResult->typeStress->id;
+        // $category = Category::findOrFail($id);
+        $mainType = Auth::user()->stressResult->main_type;
+        $exercices = Exercice::whereHas('typeStress', function ($query) use ($mainType) {
+            $query->where('name', $mainType);
+        })->get();
+        // dd($exercices);
+        // ###########################
+
+        $nombreExercicesDansMonTypeDeStress = $exercices->count();
+        // dd($nombreExercicesDansMonTypeDeStress);
+        $progress = ($completedExercisesCount / $nombreExercicesDansMonTypeDeStress) * 100;
+        // dd($progress);
+        return view('utilisateurs/profil', compact('user', 'completedExercisesCount', 'completedAdvicesCount','nombreExercicesDansMonTypeDeStress', 'progress'));
+    }
+
     public function update(Request $request)
     {
         $user = auth()->user();
@@ -40,5 +73,23 @@ class ProfileController extends Controller
 
         return redirect()->route('profile')->with('success', 'Profil mis à jour avec succès.');
     }
-
+    public function ExerciceProgress()
+    {
+        $user = auth()->user();
+        $exercices = $user->exerciseProgress()
+            ->whereNotNull('exercice_id')
+            ->where('is_completed', true)
+            // ->with('exercice')
+            ->get();
+// dd($exercices);
+        return view('utilisateurs/exCompleted', compact('user', 'exercices'));
+    }
+    public function AdviceProgress()
+    {
+        $user = auth()->user();
+        $advices = $user->read()
+            ->where('is_completed', true)
+            ->get();
+        return view('utilisateurs/advicesRead', compact('user','advices'));
+    }
 }
