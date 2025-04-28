@@ -21,4 +21,12 @@ class UserExerciseProgress extends Model
     {
         return $this->belongsTo(Exercice::class);
     }
+  
+
+
+public function advice()
+{
+    return $this->belongsTo(Advice::class);
+}
+
 }

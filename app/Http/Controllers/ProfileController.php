@@ -16,6 +16,23 @@ class ProfileController extends Controller
             'user' => $user,
         ]);
     }
+    public function progress()
+{
+    $user = auth()->user();
+
+    $completedExercisesCount = $user->exerciseProgress()
+        ->whereNotNull('exercice_id')
+        ->where('is_completed', true)
+        ->count();
+
+    $completedAdvicesCount = $user->exerciseProgress()
+        ->whereNotNull('advice_id')
+        ->where('is_completed', true)
+        ->count();
+
+    return view('utilisateurs/profil', compact('user', 'completedExercisesCount', 'completedAdvicesCount'));
+}
+
     public function update(Request $request)
     {
         $user = auth()->user();
@@ -39,6 +56,16 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->route('profile')->with('success', 'Profil mis à jour avec succès.');
+    }
+    public function ExerciceProgress()
+    {
+        $user = auth()->user();
+        $exercices = $user->exerciseProgress()
+            ->whereNotNull('exercice_id')
+            ->where('is_completed', true)
+            ->get();
+
+        return view('utilisateurs/exCompleted', compact('user', 'exercices'));
     }
 
 }

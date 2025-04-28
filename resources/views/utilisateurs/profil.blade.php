@@ -106,22 +106,29 @@
         
         <!-- Stats Section -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div class="bg-[#FBF4FA] rounded-xl p-4 text-center">
-            <h3 class="text-[#C447AF] font-medium mb-1">Completed Exercises</h3>
-            <p class="text-2xl font-bold">12</p>
-          </div>
-          
-          <div class="bg-[#FBF4FA] rounded-xl p-4 text-center">
-            <h3 class="text-[#C447AF] font-medium mb-1">Days Active</h3>
-            <p class="text-2xl font-bold">28</p>
-          </div>
-          
+         
           <div class="bg-[#FBF4FA] rounded-xl p-4 text-center">
             <h3 class="text-[#C447AF] font-medium mb-1">Stress Type</h3>
             <p class="text-2xl font-bold">{{ ucfirst($user->stressResult->main_type) }}</p>
           </div>
         </div>
-        
+        <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
+    <h2 class="text-2xl font-bold text-[#C447AF] mb-4">My Progress</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-4 bg-[#FBF4FA] rounded-xl text-center shadow">
+          <a href="{{ route('ExerciceProgress') }}" class="text-[#C447AF] hover:text-[#E192D4] font-semibold">
+            <h3 class="text-lg font-semibold text-gray-700">Exercises Completed</h3>
+            <p class="text-3xl font-bold text-[#C447AF]">{{ $completedExercisesCount }}</p>
+          </a>
+        </div>
+
+        <div class="p-4 bg-[#FBF4FA] rounded-xl text-center shadow">
+            <h3 class="text-lg font-semibold text-gray-700">Advices Completed</h3>
+            <p class="text-3xl font-bold text-[#C447AF]">{{ $completedAdvicesCount }}</p>
+        </div>
+    </div>
+</div>
         <!-- Edit Button -->
         <div class="flex justify-center">
           <button id="edit-profile-btn" class="bg-[#C447AF] hover:bg-[#DD6ECA] text-white font-bold py-3 px-8 rounded-xl transition flex items-center">

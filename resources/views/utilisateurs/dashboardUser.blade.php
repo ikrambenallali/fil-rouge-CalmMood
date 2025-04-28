@@ -102,7 +102,7 @@
       </div>
 
       <div class="flex justify-center">
-        <a href="/exercises" class="bg-[#C447AF] hover:bg-[#DD6ECA] text-white font-bold py-3 px-6 rounded-xl transition">
+        <a href="{{ route('categoryExUser') }}" class="bg-[#C447AF] hover:bg-[#DD6ECA] text-white font-bold py-3 px-6 rounded-xl transition">
           Start Exercises
         </a>
       </div>

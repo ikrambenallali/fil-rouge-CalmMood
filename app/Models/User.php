@@ -59,6 +59,10 @@ public function completedExercises()
 {
     return $this->hasMany(UserExerciseProgress::class);
 }
+public function exerciseProgress()
+{
+    return $this->hasMany(UserExerciseProgress::class);
+}
 
 
 }

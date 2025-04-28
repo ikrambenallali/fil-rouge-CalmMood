@@ -130,7 +130,10 @@
                         @forelse ($exercices as $exercice)
                         <div class="mb-8 bg-white shadow-md rounded-2xl p-5 hover:shadow-lg transition-all duration-300 card relative transform hover:-translate-y-1">
                             <div class="pl-3">
+                            <a href="{{ route('showExDetails', $exercice->id) }}" class="block w-auto">
+
                                 <h3 class="text-xl font-semibold text-[#C447AF] mb-2">{{ $exercice->title }}</h3>
+                            </a>
                                 <p class="text-gray-600 mb-3">{{ $exercice->description }}</p>
                                 <p class="font-bold">Type of stress : {{ $exercice->typeStress->name }}</p>
 

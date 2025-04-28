@@ -76,7 +76,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // profil 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
-
+    // Route::get('/profile/progress', [ProfileController::class, 'progress'])->name('profile.progress');
+    Route::get('/profile', [ProfileController::class, 'progress'])->name('profile');
+    Route::get('/ExerciceProgress', [ProfileController::class, 'ExerciceProgress'])->name('ExerciceProgress');
 
     // type de stress iyatmandan tamazwat wani login 
     Route::get('/type', [TypeStressController::class, 'typeStress'])->name('type');
