@@ -25,7 +25,7 @@
     <div class="flex min-h-screen">
 
         <!-- Sidebar -->
-        <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-[#C447AF] text-white p-4 z-50 transform -translate-x-full transition-transform duration-300 md:relative md:translate-x-0 md:block md:h-screen">
+        <div id="sidebar" class="fixed  inset-y-0 left-0 w-64 bg-[#C447AF] text-white p-4 z-50 transform -translate-x-full transition-transform duration-300 md:relative md:translate-x-0 md:block md:h-screen">
             <h1 class="text-2xl font-bold mb-10 text-center pt-2">CalmMood</h1>
             <nav class="overflow-y-auto max-h-[calc(100vh-150px)]">
                 <ul>
