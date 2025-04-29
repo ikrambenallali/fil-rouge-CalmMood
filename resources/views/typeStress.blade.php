@@ -13,8 +13,8 @@
             </div>
         </div>
 
-        <div class="px-8">
-            @if (session('success'))
+        <div class="px-4 sm:px-6 md:px-8">
+        @if (session('success'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md mb-6 flex items-start">
                     <ion-icon name="checkmark-circle-outline" class="text-2xl mr-2 text-green-500"></ion-icon>
                     <div>
@@ -27,8 +27,8 @@
                 </div>
             @endif
 
-            <div class="flex justify-between items-center mb-8">
-                <div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
+            <div>
                     <h2 class="text-xl font-medium text-[#C447AF]">All Stress Types</h2>
                     <p class="text-gray-600">Manage and organize different stress categories</p>
                 </div>
@@ -84,7 +84,8 @@
                     </div>
                     <div class="flex justify-end space-x-4">
                         <button type="button" onclick="closeModal()" class="px-5 py-2 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors">Cancel</button>
-                        <button type="submit" class="bg-[#C447AF] text-white px-5 py-2 rounded-lg font-medium hover:bg-[#DD6ECA] transition-colors">Add Type</button>
+                        <button type="submit" class="w-full sm:w-auto bg-[#C447AF] text-white px-5 py-2 rounded-lg font-medium hover:bg-[#DD6ECA] transition-colors">
+                        Add Type</button>
                     </div>
                 </form>
             </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExerciceController;
 use App\Http\Controllers\PositivityController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\statistiqueController;
 use App\Http\Controllers\StressTestController;
 use App\Http\Controllers\TypeStressController;
 use App\Http\Controllers\UserAdviceController;
@@ -39,7 +40,7 @@ Route::get('/contact', function () {
 Route::post('/contactStore', [ContactController::class, 'store'])->name('contact.store');
 // admin 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-// user management
+    // user management
     Route::get('/dashboard', [UserController::class, 'index'])->middleware("auth")->name('allUsers');
     Route::delete('/dashboard/{id}', [UserController::class, 'destroy'])->name('deleteUser');
     Route::post('/dashboard/{id}', [UserController::class, 'activate'])->name('activerUser');
@@ -49,18 +50,19 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/advice', [AdviceController::class, 'index'])->name('advice');
     Route::put('/advice/{id}', [AdviceController::class, 'update'])->name('advice.update');
     Route::delete('/advice/{id}', [AdviceController::class, 'destroy'])->name('advice.destroy');
-// wanita omba3d ikhasa atharar ra user rakho 9a testir waha sf ni 
+    // wanita omba3d ikhasa atharar ra user rakho 9a testir waha sf ni 
     // Route::post('/positivity', [PositivityController::class, 'store'])->name('positivity');
-// categories
+    // categories
     Route::resource('categories', CategoryController::class);
     Route::get('/categoryEx', [CategoryController::class, 'showcatEx'])->name('categoryEx');
     Route::get('/admin/exercices/categorie/{id}', [ExerciceController::class, 'parCategorie'])->name('exercices.parCategorie');
-// type stress
+    // type stress
     Route::resource('type_stress', TypeStressController::class);
-// exercices
-    Route::resource('exercices', ExerciceController::class); 
+    // exercices
+    Route::resource('exercices', ExerciceController::class);
+    // statistics
+    Route::get('/statistique', [statistiqueController::class, 'index'])->name('statistique');
 });
-
 // user 
 
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -84,11 +86,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     // type de stress iyatmandan tamazwat wani login 
     Route::get('/type', [TypeStressController::class, 'typeStress'])->name('type');
-// wanita it2afichayi test i l user 
+    // wanita it2afichayi test i l user 
     Route::get('/stressResult', function () {
         return view('utilisateurs.test');
-    })->name('stress.test'); 
-// wa it2aficha dashboard ithi ditmanda man type n stress iras 
+    })->name('stress.test');
+    // wa it2aficha dashboard ithi ditmanda man type n stress iras 
     Route::get('/dashboardUser', function () {
         // Récupérer le premier résultat du test de stress de l'utilisateur connecté
         $stressResult = StressResult::where('user_id', auth()->id())->first();
@@ -108,7 +110,4 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::post('/complete', [UserExerciseProgressController::class, 'complete'])->name('exercises.complete');
     // advice progress
     Route::post('/completeLectureConseils', [UserAdviceController::class, 'completeLectureConseils'])->name('advices.complete');
-
-
 });
-
