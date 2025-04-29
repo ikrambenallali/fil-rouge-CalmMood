@@ -13,7 +13,6 @@ class Exercice extends Model
         'category_id',
         'video_url',
         'respiration_data',
-        'audio_url',
         'typeStressId',
     ];
 

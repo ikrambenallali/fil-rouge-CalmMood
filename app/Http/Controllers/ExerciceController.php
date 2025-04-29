@@ -65,7 +65,6 @@ class ExerciceController extends Controller
             'category_id' => 'required|exists:categories,id',
             'typeStressId' => 'required|exists:type_Stress,id',
             'video_url' => 'nullable|url|max:255',
-            'audio_url' => 'nullable|url|max:255',
             'respiration_data' => 'nullable|json',
 
         ]);
@@ -99,7 +98,8 @@ class ExerciceController extends Controller
     {
         $exercice = Exercice::findOrFail($id);
         $categories = Category::all();
-        return view('admin/updateEx', compact('exercice', 'categories'));
+        $typesStress = Type_stress::all();
+        return view('admin/updateEx', compact('exercice', 'categories','typesStress'));
     }
 
     /**
@@ -107,17 +107,17 @@ class ExerciceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
+// dd($request->all());
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'typeStressId' => 'required|exists:type_Stress,id',
             'video_url' => 'nullable|url|max:255',
-            'audio_url' => 'nullable|url|max:255',
             'respiration_data' => 'nullable|json',
         ]);
-
+      
+// dd($x);
         $exercice = Exercice::findOrFail($id);
 
         $exercice->update($validated);
