@@ -11,6 +11,8 @@
             @csrf
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse ($advices as $advice)
+                <a href="{{ route('tipDetails', $advice->id) }}" class="block w-auto">
+
                 <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition-all duration-300 card relative transform hover:-translate-y-1">
                     <div class="flex flex-col">
                         <img src="{{ asset('storage/' . $advice->image) }}" alt="Image" class="h-40 w-full object-cover rounded-xl mb-4">
