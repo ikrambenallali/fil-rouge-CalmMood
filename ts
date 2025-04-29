@@ -547,3 +547,43 @@ Route::post('/logout', function () {
 </body>
 
 </html>
+
+
+
+
+
+
+<!-- Statistiques Section -->
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-gray-700">Activités Récentes</h3>
+                    <ul>
+                        <li class="border-b py-2">Sophie a complété un exercice de méditation</li>
+                        <li class="border-b py-2">Lucas a consulté des conseils anti-stress</li>
+                        <li class="py-2">Nouvelle inscription ce matin</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-gray-700">Progression Globale</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-4 mb-4">
+                        <div class="bg-[#C447AF] h-4 rounded-full" style="width: 65%"></div>
+                    </div>
+                    <p class="text-center text-gray-600">65% des utilisateurs progressent</p>
+                </div>
+
+                <div class="bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-gray-700">Statistiques</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <span class="text-black">• </span>Total Utilisateurs: {{ $users->count() }}
+                        </div>
+                        <div>
+                            <span class="text-black">• </span>Utilisateurs Active :{{$users->where('status', 'activer')->count()}}
+                        </div>
+                        <div>
+                            <span class="text-black">• </span>Nouveaux cette semaine: 12
+                        </div>
+                    </div>
+                </div>
+            </div>
