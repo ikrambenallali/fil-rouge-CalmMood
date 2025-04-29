@@ -23,7 +23,7 @@ class UserController extends Controller
             });
         }
     
-        $users = $query->paginate(5)->appends(['search' => $request->search]);
+        $users = $query->paginate(8)->appends(['search' => $request->search]);
     
         return view('admin.dashboard', compact('users'));
     }

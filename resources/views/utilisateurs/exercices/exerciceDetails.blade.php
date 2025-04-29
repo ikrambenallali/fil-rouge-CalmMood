@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html lang="fr">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultat du test de stress</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<style>
-    /* Adding some initial transition properties */
-    #breath-circle {
-        transition: transform 0.5s ease-in-out;
-    }
-</style>
+@section('title', 'Résultat du test de stress')
 
-<body class="min-h-screen bg-[#FBF4FA] flex flex-col items-center justify-center text-center p-6">
+@section('content')
+    <style>
+        /* Adding some initial transition properties */
+        #breath-circle {
+            transition: transform 0.5s ease-in-out;
+        }
+    </style>
+
     <!-- positivity -->
     @if ($exercices->category->name == 'Positivity')
-    <form action="{{ route('positivity') }}" method="POST" >
-
+    <form action="{{ route('positivity') }}" method="POST">
         @csrf
-        <div class="min-h-screen bg-[#FBF4FA] flex items-center justify-center p-6">
+        <div class="flex items-center justify-center">
             <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md border border-[#C447AF]">
                 <h2 class="text-2xl font-semibold text-[#C447AF] text-center mb-6">
                     3 Positive Things Today
@@ -28,6 +22,7 @@
 
                 <input type="hidden" name="exercise_id" value="{{ $exercices->id }}">
 
+                <div class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-[#C447AF] mb-1">Positive Thought 1</label>
                         <input type="text" name="positive_thing_1" class="w-full px-4 py-2 border border-[#C447AF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C447AF] bg-[#FBF4FA] placeholder-[#C447AF]" placeholder="Something good...">
@@ -40,13 +35,13 @@
 
                     <div>
                         <label class="block text-sm font-medium text-[#C447AF] mb-1">Positive Thought 3</label>
-                        <input type="text" name="positive_thing_3" class="w-full px-4 py-2 border border-[#C447AF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C447AF] bg-[#FBF4FA] placeholder-[#C447AF]" placeholder="Something you’re grateful for...">
+                        <input type="text" name="positive_thing_3" class="w-full px-4 py-2 border border-[#C447AF] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C447AF] bg-[#FBF4FA] placeholder-[#C447AF]" placeholder="Something you're grateful for...">
                     </div>
 
                     <button type="submit" class="w-full py-3 rounded-xl bg-[#C447AF] text-white font-semibold mt-6">
                         Save My Positives
                     </button>
-                
+                </div>
 
                 <p class="mt-6 text-center text-sm text-[#C447AF]">
                     ✨ You'll receive sweet reminders to reflect on your happy moments ✨
@@ -54,32 +49,24 @@
             </div>
         </div>
     </form>
-
-    </div>
-
     @endif
 
-    <div id="barreExercice" class="{{ $exercices->category->name === 'Positivity' ? 'hidden' : '' }} bg-white shadow-xl rounded-2xl p-16 max-w-xl w-full border-4 border-[#C447AF]">
-
-        <p class="mb-8 text-gray-600"> Recommended exercise : <span class="font-semibold">{{ $exercices->title }}</span></p>
+    <div id="barreExercice" class="{{ $exercices->category->name === 'Positivity' ? 'hidden' : '' }} bg-white shadow-xl rounded-2xl p-16 max-w-xl mx-auto w-full border-4 border-[#C447AF]">
+        <p class="mb-8 text-gray-600">Recommended exercise: <span class="font-semibold">{{ $exercices->title }}</span></p>
 
         @if ($exercices->category->name == 'Breathing')
         <div id="breath-circle" class="w-32 h-32 rounded-full border-4 border-[#E192D4] flex items-center justify-center text-xl font-bold text-[#C447AF] mx-auto mb-10">
             Inspire
         </div>
-        <div class="mt-4 text-gray-700">
-            <button id="start-exercice" class="mb-4 bg-[#E192D4]  text-white px-6 py-2 rounded-xl ">
-            Start the exercise
+        <div class="mt-4 text-gray-700 text-center">
+            <button id="start-exercice" class="mb-4 bg-[#E192D4] text-white px-6 py-2 rounded-xl">
+                Start the exercise
             </button>
-            <button id="stop-exercice" class="mb-4 bg-[#C447AF] text-white px-6 py-2 rounded-xl  hidden">
-            Stop exercising
+            <button id="stop-exercice" class="mb-4 bg-[#C447AF] text-white px-6 py-2 rounded-xl hidden">
+                Stop exercising
             </button>
-
         </div>
-
         @endif
-
-
 
         @php
         $youtubeId = $exercices->getYoutubeId($exercices->video_url);
@@ -96,9 +83,10 @@
             </iframe>
         </div>
         @endif
+
         @if ($exercices->category->name == 'Meditation' && !$exercices->video_url)
         <div class="aspect-w-8 aspect-h-4 mb-6 flex justify-center">
-            <img class="w-1/2 " src="{{ asset('storage/images/photo10.png') }}">
+            <img class="w-1/2" src="{{ asset('storage/images/photo10.png') }}">
             <audio id="exercice-audio" controls class="relative z-10 hidden" autoplay>
                 <source src="{{ asset('storage/audio/audio2.mp3') }}" type="audio/mpeg">
                 Votre navigateur ne supporte pas la lecture audio.
@@ -106,21 +94,19 @@
         </div>
         @endif
 
-
-
-        <p class="text-sm text-gray-500">Follow the rhythm for 2 minutes to calm your mind </p>
-
+        <p class="text-sm text-gray-500 text-center">Follow the rhythm for 2 minutes to calm your mind</p>
     </div>
 
-    @if(!$exercices->video_url && $exercices->category->name == 'Breathing' )
+    @if(!$exercices->video_url && $exercices->category->name == 'Breathing')
     <audio id="exercice-audio" controls class="relative z-10 hidden" autoplay>
         <source src="{{ asset('storage/audio/audio1.mp3') }}" type="audio/mpeg">
         <source src="{{ asset('storage/audio/audio1.mp3') }}" type="audio/ogg">
         Votre navigateur ne supporte pas la lecture audio.
     </audio>
     @endif
+
     <script>
-        let categoryName = @json($exercices -> category -> name);
+        let categoryName = @json($exercices->category->name);
 
         const barre = document.getElementById('barreExercice');
 
@@ -130,8 +116,7 @@
             barre.classList.remove('hidden');
         }
 
-
-        const respirationData = @json($exercices -> respiration_data ?? []);
+        const respirationData = @json($exercices->respiration_data ?? []);
 
         let parsedData = respirationData;
         if (typeof respirationData === 'string') {
@@ -143,7 +128,7 @@
             }
         }
 
-        startBtn = document.getElementById('start-exercice');
+        const startBtn = document.getElementById('start-exercice');
         console.log("StartBtn:", startBtn);
 
         startBtn?.addEventListener('click', () => {
@@ -172,10 +157,7 @@
         const breathCircle = document.getElementById('breath-circle');
         let breathingInterval;
 
-
-
         function startBreathing() {
-
             const inspireDuration = parsedData.inspireDuration || 0;
             const retainDuration = parsedData.retainDuration || 0;
             const expireDuration = parsedData.expireDuration || 0;
@@ -211,20 +193,18 @@
             }, totalCycle);
         }
 
-        startBtn.addEventListener('click', function() {
-            if (breathingInterval) {
-                clearTimeout(breathingInterval);
-            }
-            breathingInterval = startBreathing(
-                respirationData.inspireDuration,
-                respirationData.retainDuration,
-                respirationData.expireDuration
-            );
-            this.textContent = "Restart Breathing";
-        });
+        if (startBtn) {
+            startBtn.addEventListener('click', function() {
+                if (breathingInterval) {
+                    clearTimeout(breathingInterval);
+                }
+                breathingInterval = startBreathing(
+                    respirationData.inspireDuration,
+                    respirationData.retainDuration,
+                    respirationData.expireDuration
+                );
+                this.textContent = "Restart Breathing";
+            });
+        }
     </script>
-
-
-</body>
-
-</html>
+@endsection
