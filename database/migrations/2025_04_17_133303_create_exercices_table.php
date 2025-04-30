@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->integer('duration')->nullable(); 
             $table->string('video_url')->nullable(); 
             $table->json('respiration_data')->nullable();
             $table->timestamps();

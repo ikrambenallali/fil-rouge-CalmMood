@@ -106,7 +106,7 @@
 @endif
 
 <script>
-    let categoryName = @json($exercices - > category - > name);
+    let categoryName = @json($exercices -> category -> name);
 
     const barre = document.getElementById('barreExercice');
 
@@ -116,7 +116,7 @@
         barre.classList.remove('hidden');
     }
 
-    const respirationData = @json($exercices - > respiration_data ?? []);
+    const respirationData = @json($exercices -> respiration_data ?? []);
 
     let parsedData = respirationData;
     if (typeof respirationData === 'string') {

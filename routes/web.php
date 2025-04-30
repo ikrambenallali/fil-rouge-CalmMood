@@ -108,7 +108,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::post('/complete', [UserExerciseProgressController::class, 'complete'])->name('exercises.complete');
     // advice progress
     Route::post('/completeLectureConseils', [UserAdviceController::class, 'completeLectureConseils'])->name('advices.complete');
-
+// notification 
+Route::get('/PostivityNotification',[PositivityController::class, 'PostivityNotification'])->name('PostivityNotification');
 
 });
 
