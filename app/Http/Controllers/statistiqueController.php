@@ -14,7 +14,6 @@ class statistiqueController extends Controller
     public function index()
     {
         $totalUsers = User::count();
-        // $completedExercises = Exercice::whereNotNull('is_completed')->count();
         $totalCategories = Category::count();
         $totalAdvices = Advice::count();
         $stressResults = StressResult::all();

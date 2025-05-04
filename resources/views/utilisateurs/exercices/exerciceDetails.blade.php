@@ -106,7 +106,7 @@
 @endif
 
 <script>
-    let categoryName = @json($exercices - > category - > name);
+    let categoryName = @json($exercices -> category -> name);
 
     const barre = document.getElementById('barreExercice');
 
@@ -116,7 +116,7 @@
         barre.classList.remove('hidden');
     }
 
-    const respirationData = @json($exercices - > respiration_data ?? []);
+    const respirationData = @json($exercices -> respiration_data ?? []);
 
     let parsedData = respirationData;
     if (typeof respirationData === 'string') {
@@ -129,7 +129,7 @@
     }
 
     const startBtn = document.getElementById('start-exercice');
-    console.log("StartBtn:", startBtn);
+    // console.log("StartBtn:", startBtn);
 
     startBtn?.addEventListener('click', () => {
         const audio = document.getElementById('exercice-audio');
@@ -153,7 +153,7 @@
         stopBtn.classList.add('hidden');
         startBtn.classList.remove('hidden');
     });
-
+// sa ithbada partie n exercice n respiration 
     const breathCircle = document.getElementById('breath-circle');
     let breathingInterval;
 
@@ -170,7 +170,7 @@
         breathCircle.style.transition = 'none';
         breathCircle.style.transform = 'scale(1)';
         breathCircle.textContent = 'Inspire';
-
+// requestAnimationFrame taganar animation 9bar irathag page render
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 breathCircle.style.transition = `transform ${inspireDuration}s ease-in-out`;

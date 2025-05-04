@@ -83,7 +83,7 @@
           </div>
 
           <!-- Form -->
-          <form action="{{ route('contact.store') }}" method="POST">
+          <form action="" method="POST">
             @csrf
             <div class="flex flex-col gap-4 w-full">
               <input type="text" name="first_name" placeholder="First Name" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#C447AF]" />

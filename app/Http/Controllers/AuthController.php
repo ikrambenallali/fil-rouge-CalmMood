@@ -64,7 +64,11 @@ class AuthController extends Controller
                 'message' => 'The provided credentials are incorrect.'
             ];
         }
-
+        if ($user->status === 'desactiver') {
+            return response()->json([
+                'message' => 'Votre compte est désactivé. Veuillez contacter l\'administrateur.'
+            ], 403); 
+        }
         $token = $user->createToken($user->name);
         Auth::login($user);
 

@@ -81,13 +81,12 @@ class AdviceController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string|max:255',
-            'image' => ['nullable', 'image'], // image facultative lors de l'update
+            'image' => ['nullable', 'image'], 
         ]);
 
         $advice = Advice::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            // Supprimer l'ancienne image s'il y en a une
             if ($advice->image) {
                 Storage::disk('public')->delete($advice->image);
             }
